@@ -1,3 +1,11 @@
+.descriptionBox_container {
+  display: flex;
+  width: 100%;
+}
+
 .DB_btn1 {
   color: powderblue;
+  background-color: rgb(120, 120, 120);
+  border-radius: 5px;
+  font-size: 50px;
 }
