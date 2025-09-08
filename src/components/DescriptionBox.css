@@ -1,11 +1,39 @@
-.descriptionBox_container {
-  display: flex;
+.Title {
+  color: black;
+  background: powderblue;
   width: 100%;
+  text-align: center;
+  font-size: 40px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
-.DB_btn1 {
-  color: powderblue;
-  background-color: rgb(120, 120, 120);
-  border-radius: 5px;
+.descriptionBox_container {
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 20px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.D_Box {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
   font-size: 50px;
+
+  overflow-wrap: break-word; /* 테스트용, 박스 내부 텍스트 자동 줄바꿈 기능 */
+}
+
+.top-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.bottom-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 }
