@@ -1,0 +1,23 @@
+.home_container {
+  background-color: rgb(20, 20, 20);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+}
+
+.site_title {
+  font-weight: bold;
+}
+
+.site_content {
+  font-size: 30px;
+}
+
+.btn_container {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
