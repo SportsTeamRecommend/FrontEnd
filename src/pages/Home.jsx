@@ -1,6 +1,7 @@
 import './Home.css';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
+import DescriptionBox from '../components/DescriptionBox';
 
 const Home = () => {
   const nav = useNavigate();
@@ -20,6 +21,9 @@ const Home = () => {
       <div className="btn_container">
         <Button onClick={goF1Test} text="F1" type="f1" />
         <Button onClick={goBaseballTest} text="BASEBALL" type="baseball" />
+      </div>
+      <div className="descriptionBox_container">
+        <DescriptionBox />
       </div>
     </div>
   );
