@@ -2,7 +2,7 @@
 import './DescriptionBox.css';
 
 const DescriptionBox = () => {
-  return <div>DescriptionBox</div>;
+  return <div className="DB_btn1">DescriptionBox</div>;
 };
 
 export default DescriptionBox;
