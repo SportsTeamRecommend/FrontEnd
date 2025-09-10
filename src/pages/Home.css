@@ -1,5 +1,15 @@
 .home_container {
-  background-color: rgb(20, 20, 20);
+  /* background-color: rgb(20, 20, 20); */
+  background-image: linear-gradient(
+    135deg,
+    #1f2937 0%,
+    #0f172a 50%,
+    #000000 100%
+  );
+  /* background-color: #000000; */
+  position: relative;
+  overflow: hidden;
+
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -20,4 +30,37 @@
   width: 100%;
   display: flex;
   justify-content: space-evenly;
+}
+
+.DB_header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.DB_title {
+  font-size: 1.875rem;
+  font-weight: bold;
+  color: #ffffff; /* 완전한 흰색으로 변경 */
+  margin-bottom: 1rem;
+}
+.DB_description {
+  color: #f3f4f6; /* 더 밝은 회색으로 변경 */
+  font-size: 1.125rem;
+}
+
+.DB_grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .DB_grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .DB_grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
 }
