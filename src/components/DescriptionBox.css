@@ -1,39 +1,23 @@
-.Title {
-  color: black;
-  background: powderblue;
-  width: 100%;
+.DB_card {
+  background: rgba(31, 41, 55, 0.4);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(75, 85, 99, 0.3);
+  padding: 1.5rem;
   text-align: center;
-  font-size: 40px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  transition: all 0.2s;
+  border-radius: 0.5rem;
+}
+.DB_card:hover {
+  background: rgba(55, 65, 81, 0.5); /* 호버 시 더 어두운 배경 */
 }
 
-.descriptionBox_container {
-  display: grid;
-  grid-template-rows: auto auto;
-  gap: 20px;
-  max-width: 100%;
-  margin: 0 auto;
+.feature-title {
+  font-weight: 600;
+  color: #ffffff; /* 완전한 흰색으로 변경 */
+  margin-bottom: 0.5rem;
 }
 
-.D_Box {
-  background: white;
-  border-radius: 12px;
-  padding: 16px;
-  text-align: center;
-  font-size: 50px;
-
-  overflow-wrap: break-word; /* 테스트용, 박스 내부 텍스트 자동 줄바꿈 기능 */
-}
-
-.top-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.bottom-row {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+.feature-description {
+  color: #e5e7eb; /* 더 밝은 회색으로 변경 */
+  font-size: 0.875rem;
 }

@@ -3,6 +3,39 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
 import DescriptionBox from '../components/DescriptionBox';
 
+const DB_Description = [
+  {
+    key: 1,
+    img: undefined,
+    title: '커뮤니티',
+    description: '같은 팀 팬들과 소통',
+  },
+  {
+    key: 2,
+    img: undefined,
+    title: '재미있는 경험',
+    description: '스포츠의 즐거움',
+  },
+  {
+    key: 2,
+    img: undefined,
+    title: '재미있는 경험',
+    description: '스포츠의 즐거움',
+  },
+  {
+    key: 2,
+    img: undefined,
+    title: '재미있는 경험',
+    description: '스포츠의 즐거움',
+  },
+  {
+    key: 2,
+    img: undefined,
+    title: '재미있는 경험',
+    description: '스포츠의 즐거움',
+  },
+];
+
 const Home = () => {
   const nav = useNavigate();
   const goF1Test = () => {
@@ -22,9 +55,21 @@ const Home = () => {
         <Button onClick={goF1Test} text="F1" type="f1" />
         <Button onClick={goBaseballTest} text="BASEBALL" type="baseball" />
       </div>
-      <div className="descriptionBox_container">
-        <DescriptionBox />
-      </div>
+      <section className="descriptionBox_container">
+        <div className="DB_header">
+          <h2 className="DB_title">왜 이 테스트를 해야 할까요?</h2>
+          <p className="DB_description">
+            당신의 성향을 분석해서 가장 잘 맞는 팀을 찾아드립니다
+          </p>
+        </div>
+        <div className="DB_grid">
+          <DescriptionBox des={DB_Description[0]} />
+          <DescriptionBox des={DB_Description[1]} />
+          <DescriptionBox des={DB_Description[2]} />
+          <DescriptionBox des={DB_Description[3]} />
+          <DescriptionBox des={DB_Description[4]} />
+        </div>
+      </section>
     </div>
   );
 };
