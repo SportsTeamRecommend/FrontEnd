@@ -8,33 +8,28 @@ import { Trophy, Zap, Users, Target, Heart, Star } from 'lucide-react';
 const DB_Description = [
   {
     key: 1,
-    img: undefined,
+    title: '스포츠 입문',
+    description: '흥미와 매력',
+  },
+  {
+    key: 2,
+    title: '정확한 분석',
+    description: '성향 기반 매칭',
+  },
+  {
+    key: 3,
     title: '커뮤니티',
-    description: '같은 팀 팬들과 소통',
+    description: '소속감과 소통',
   },
   {
-    key: 2,
-    img: undefined,
-    title: '재미있는 경험',
-    description: '스포츠의 즐거움',
+    key: 4,
+    title: '나만의 팀',
+    description: '성향과 취향을 반영',
   },
   {
-    key: 2,
-    img: undefined,
-    title: '재미있는 경험',
-    description: '스포츠의 즐거움',
-  },
-  {
-    key: 2,
-    img: undefined,
-    title: '재미있는 경험',
-    description: '스포츠의 즐거움',
-  },
-  {
-    key: 2,
-    img: undefined,
-    title: '재미있는 경험',
-    description: '스포츠의 즐거움',
+    key: 5,
+    title: '승리의 기쁨',
+    description: '함께하는 환호',
   },
 ];
 
@@ -51,7 +46,15 @@ const Home = () => {
       {/* Header */}
       <div className="header">
         <div className="logo-section">
-          <div className="logo-icon"></div>
+          <div className="logo-icon">
+            <Trophy
+              style={{
+                color: 'FBBF24',
+                width: '2rem',
+                height: '2rem',
+              }}
+            />
+          </div>
           <span className="logo-text">우리 웹사이트 이름</span>
         </div>
         <div className="language-selector">
@@ -73,12 +76,12 @@ const Home = () => {
               </h1>
               <p className="description">
                 F1과 KBO의 다양한 팀들 중에서 당신의 성향과 취향에 가장 잘 맞는
-                팀을 추천해드립니다. 간단한 테스트로 평생 응원할 팀을
-                만나보세요.
+                팀을 추천해드립니다. <br />
+                간단한 테스트로 평생 응원할 팀을 만나보세요.
               </p>
             </div>
 
-            {/* Search Buttons */}
+            {/* F1, KBO Buttons */}
             <div className="button-container">
               <button
                 className="sport-button f1-button"
@@ -116,11 +119,26 @@ const Home = () => {
             </p>
           </div>
           <div className="DB_grid">
-            <DescriptionBox des={DB_Description[0]} />
-            <DescriptionBox des={DB_Description[1]} />
-            <DescriptionBox des={DB_Description[2]} />
-            <DescriptionBox des={DB_Description[3]} />
-            <DescriptionBox des={DB_Description[4]} />
+            <DescriptionBox
+              des={DB_Description[0]}
+              icon={<Star className="icon" style={{ color: 'C4B5FD' }} />}
+            />
+            <DescriptionBox
+              des={DB_Description[1]}
+              icon={<Target className="icon" style={{ color: 'FBBF24' }} />}
+            />
+            <DescriptionBox
+              des={DB_Description[2]}
+              icon={<Users className="icon" style={{ color: 'FFFFFF' }} />}
+            />
+            <DescriptionBox
+              des={DB_Description[3]}
+              icon={<Heart className="icon" style={{ color: 'F87171' }} />}
+            />
+            <DescriptionBox
+              des={DB_Description[4]}
+              icon={<Trophy className="icon" style={{ color: 'FBBF24' }} />}
+            />
           </div>
         </section>
       </div>
