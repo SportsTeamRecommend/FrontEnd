@@ -18,6 +18,10 @@
   align-items: center;
 }
 
+.header {
+  color: white;
+}
+
 .site_title {
   font-weight: bold;
 }

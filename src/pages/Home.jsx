@@ -46,6 +46,8 @@ const Home = () => {
   };
   return (
     <div className="home_container">
+      <div className="header">header</div>
+
       <h1 className="site_title">팀추천 해줍니다(사이트 이름)</h1>
       <div>
         <p className="site_content">당신의 스포츠 팀을 찾아보세요</p>
