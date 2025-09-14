@@ -46,7 +46,15 @@ const Home = () => {
   };
   return (
     <div className="home_container">
-      <div className="header">header</div>
+      <div className="header">
+        <div className="logo-section">
+          <div className="logo-icon"></div>
+          <span className="logo-text">우리 웹사이트 이름</span>
+        </div>
+        <div className="language-selector">
+          <span>🇰🇷 한국어</span>
+        </div>
+      </div>
 
       <h1 className="site_title">팀추천 해줍니다(사이트 이름)</h1>
       <div>
