@@ -1,23 +1,17 @@
 .home_container {
-  /* background-color: rgb(20, 20, 20); */
+  min-height: 100vh;
+  background-color: #000000; /* 기본 배경을 검은색으로 설정 */
   background-image: linear-gradient(
     135deg,
     #1f2937 0%,
     #0f172a 50%,
     #000000 100%
   );
-  /* background-color: #000000; */
   position: relative;
   overflow: hidden;
-
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  /* align-items: center; */
 }
 
+/* Header */
 .header {
   display: flex;
   justify-content: space-between;
@@ -51,6 +45,114 @@
   color: rgba(255, 255, 255, 0.9);
   font-size: 1rem;
 }
+
+/* Main */
+.main-content {
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+/* Content_Grid*/
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.left-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.first-text {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+.main-title {
+  font-size: 2.25rem;
+  font-weight: bold;
+  color: #ffffff;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+.description {
+  font-size: 1.125rem;
+  color: #f9fafb;
+  line-height: 1.6;
+}
+
+/* Sport Buttons */
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+@media (min-width: 740px) {
+  .button-container {
+    flex-direction: row;
+  }
+}
+
+.sport-button {
+  font-weight: bold;
+  padding: 1.5rem 3rem;
+  border-radius: 1rem;
+  font-size: 1.25rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s;
+  min-width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+
+  width: 300px;
+  height: 100px;
+}
+@media (max-width: 740px) {
+  .sport-button {
+    width: 100%;
+  }
+}
+
+.sport-button:hover {
+  transform: scale(1.05);
+}
+
+.f1-button {
+  background-color: rgb(239, 68, 68);
+  color: white;
+}
+
+.f1-button:hover {
+  background-color: rgb(220, 38, 38);
+}
+
+.kbo-button {
+  background-color: rgb(37, 99, 235);
+  color: white;
+}
+
+.kbo-button:hover {
+  background-color: rgb(29, 78, 216);
+}
+
+.button-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.75rem;
+}
+
+/* ~~~ */
+
 .site_title {
   font-weight: bold;
 }
@@ -72,11 +174,11 @@
 .DB_title {
   font-size: 1.875rem;
   font-weight: bold;
-  color: #ffffff; /* 완전한 흰색으로 변경 */
+  color: #ffffff;
   margin-bottom: 1rem;
 }
 .DB_description {
-  color: #f3f4f6; /* 더 밝은 회색으로 변경 */
+  color: #f3f4f6;
   font-size: 1.125rem;
 }
 
@@ -84,9 +186,11 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
+  margin: 20px;
 }
 
-@media (min-width: 768px) {
+/* 반응형 */
+@media (min-width: 740px) {
   .DB_grid {
     grid-template-columns: repeat(3, 1fr);
   }
