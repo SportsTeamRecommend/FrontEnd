@@ -53,7 +53,7 @@
   position: relative;
   z-index: 10;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: auto;
   padding: 3rem 1.5rem;
 }
 
@@ -171,7 +171,8 @@
 
 .DB_header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
+  margin-top: 3rem;
 }
 .DB_title {
   font-size: 1.875rem;
