@@ -104,6 +104,20 @@ const Home = () => {
             </div>
           </div>
 
+          <div className="right-content">
+            <div className="illustration-box">
+              <div className="circle-box">
+                <Users className="circle-icon" />
+              </div>
+              <div
+                className="circle-text"
+                style={{ color: '#ffffff', fontWeight: '500' }}
+              >
+                나만의 팀을 찾아보세요!
+              </div>
+            </div>
+          </div>
+
           {/* <div className="btn_container">
             <Button onClick={goF1Test} text="F1" type="f1" />
             <Button onClick={goBaseballTest} text="BASEBALL" type="baseball" />
