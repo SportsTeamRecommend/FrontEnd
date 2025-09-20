@@ -1,0 +1,47 @@
+@keyframes floatY {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.float-box {
+  position: absolute;
+  color: #fff;
+  padding: 0.5rem 1.2rem;
+  border-radius: 2rem;
+  font-weight: 600;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  font-size: 0.9rem;
+  cursor: pointer;
+
+  /* 딜레이를 변수로 받음: --delay가 없으면 0s */
+  animation: floatY 3s ease-in-out var(--delay, 0s) infinite;
+}
+
+/* 박스별 서로 다른 타이밍 */
+.float-delay-1 {
+  --delay: 0s;
+}
+.float-delay-2 {
+  --delay: 0.4s;
+}
+.float-delay-3 {
+  --delay: 0.8s;
+}
+.float-delay-4 {
+  --delay: 1.2s;
+}
+.float-delay-5 {
+  --delay: 1.6s;
+}
+.float-delay-6 {
+  --delay: 2s;
+}

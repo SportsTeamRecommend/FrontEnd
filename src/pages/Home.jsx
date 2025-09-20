@@ -2,6 +2,7 @@ import './Home.css';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
 import DescriptionBox from '../components/DescriptionBox';
+import HoverTeamName from '../components/home/HoverTeamName';
 
 import { Trophy, Zap, Users, Target, Heart, Star } from 'lucide-react';
 
@@ -30,6 +31,44 @@ const DB_Description = [
     key: 5,
     title: '승리의 기쁨',
     description: '함께하는 환호',
+  },
+];
+const TeamNames = [
+  {
+    name: 'Ferrari',
+    color: '#E02424',
+    xy: { x: 300, y: 10 },
+    delayClass: 'float-delay-1',
+  },
+  {
+    name: 'Mclaren',
+    color: '#F97316',
+    xy: { x: -160, y: 155 },
+    delayClass: 'float-delay-2',
+  },
+  {
+    name: 'AMG',
+    color: '#10B981',
+    xy: { x: 330, y: 260 },
+    delayClass: 'float-delay-3',
+  },
+  {
+    name: '롯데 자이언츠',
+    color: '#1E3A8A',
+    xy: { x: -120, y: 30 },
+    delayClass: 'float-delay-4',
+  },
+  {
+    name: 'LG 트윈스',
+    color: '#BE185D',
+    xy: { x: 370, y: 120 },
+    delayClass: 'float-delay-5',
+  },
+  {
+    name: '키움 히어로즈',
+    color: '#581C1C',
+    xy: { x: -80, y: 300 },
+    delayClass: 'float-delay-6',
   },
 ];
 
@@ -69,16 +108,16 @@ const Home = () => {
             <div className="first-text">
               <h1 className="main-title">
                 당신에게 딱 맞는
-                <br />
-                <span style={{ color: '#fbbf24' }}>스포츠 팀</span>을
-                <br />
+                <span style={{ color: '#fbbf24' }}> 스포츠 팀</span>을
                 찾아보세요!
               </h1>
-              <p className="description">
+              <div className="description">
                 F1과 KBO의 다양한 팀들 중에서 당신의 성향과 취향에 가장 잘 맞는
-                팀을 추천해드립니다. <br />
+                팀을 추천해드립니다.
+              </div>
+              <div className="description">
                 간단한 테스트로 평생 응원할 팀을 만나보세요.
-              </p>
+              </div>
             </div>
 
             {/* F1, KBO Buttons */}
@@ -115,6 +154,14 @@ const Home = () => {
               >
                 나만의 팀을 찾아보세요!
               </div>
+              {TeamNames.map((b) => (
+                <HoverTeamName
+                  name={b.name}
+                  color={b.color}
+                  xy={b.xy}
+                  delayClass={b.delayClass}
+                />
+              ))}
             </div>
           </div>
 
