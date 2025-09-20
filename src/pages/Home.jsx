@@ -40,16 +40,12 @@ const Home = () => {
             {/* F1, KBO Buttons */}
 
             <div className={styles['button-container']}>
-              <Button
-                onClick={goF1Test}
-                text={'F1팀 통계'}
-                type={'f1-button'}
-              />
+              <Button onClick={goF1Test} text={'F1팀'} type={'f1-button'} />
               {/* <Zap className={styles['button-icon']} /> */}
 
               <Button
                 onClick={goBaseballTest}
-                text={'KBO팀 통계'}
+                text={'KBO팀'}
                 type={'kbo-button'}
               />
             </div>
