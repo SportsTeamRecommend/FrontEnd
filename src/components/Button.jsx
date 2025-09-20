@@ -2,7 +2,12 @@ import styles from './Button.module.css';
 
 const Button = ({ onClick, text, type }) => {
   return (
-    <button onClick={onClick} className={styles[`btn_${type}`]}>
+    <button
+      className={`${styles['sport-button']} ${styles[type]}`}
+      onClick={onClick}
+      text={text}
+      type={type}
+    >
       {text}
     </button>
   );

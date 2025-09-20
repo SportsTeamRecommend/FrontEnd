@@ -1,12 +1,6 @@
 .home_container {
   min-height: 100vh;
-  background-color: #000000; /* 기본 배경을 검은색으로 설정 */
-  background-image: linear-gradient(
-    135deg,
-    #1f2937 0%,
-    #0f172a 50%,
-    #000000 100%
-  );
+
   position: relative;
   overflow: hidden;
 }
@@ -74,6 +68,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 50px;
 }
 .main-title {
   font-size: 2.25rem;
