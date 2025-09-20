@@ -53,7 +53,7 @@
   position: relative;
   z-index: 10;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: auto;
   padding: 3rem 1.5rem;
 }
 
@@ -73,7 +73,7 @@
 .first-text {
   display: flex;
   flex-direction: column;
-  margin-left: 20px;
+  align-items: center;
 }
 .main-title {
   font-size: 2.25rem;
@@ -95,6 +95,8 @@
   gap: 1rem;
   margin-right: 20px;
   margin-left: 20px;
+  align-items: center;
+  justify-content: center;
 }
 @media (min-width: 740px) {
   .button-container {
@@ -153,6 +155,45 @@
   margin-right: 0.75rem;
 }
 
+/* right-content */
+.right-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.illustration-box {
+  width: 20rem;
+  height: 20rem;
+  background: rgba(31, 41, 55, 0.3);
+  border-radius: 50%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(75, 85, 99, 0.3);
+  gap: 20px;
+
+  position: relative;
+}
+
+.circle-box {
+  width: 30%;
+  height: 30%;
+  background: rgba(31, 41, 55);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.circle-icon {
+  width: 3rem;
+  height: 3rem;
+  color: #ffffff;
+}
+
 /* ~~~ */
 
 .site_title {
@@ -171,7 +212,8 @@
 
 .DB_header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
+  margin-top: 3rem;
 }
 .DB_title {
   font-size: 1.875rem;
