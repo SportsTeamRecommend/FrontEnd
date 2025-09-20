@@ -1,7 +1,7 @@
-import WeightSlider from '../components/WeightSlider';
-import LiveResultCard from '../components/LiveResultCard';
+import WeightSlider from '../components/test/WeightSlider';
+import LiveResultCard from '../components/test/LiveResultCard';
 import Button from '../components/Button';
-import './F1Test.css';
+import styles from './F1Test.module.css';
 import { useNavigate } from 'react-router-dom';
 
 const F1Test = () => {
@@ -20,17 +20,17 @@ const F1Test = () => {
   };
 
   return (
-    <div className="f1test-page">
-      <div className="f1test-title">F1Test</div>
-      <div className="test-container">
-        <div className="slider-section">
+    <div className={styles["f1test-page"]}>
+      <div className={styles["f1test-title"]}>F1Test</div>
+      <div className={styles["test-container"]}>
+        <div className={styles["slider-section"]}>
           <WeightSlider labels={f1SliderLabels} />
         </div>
-        <div className="rank-section">
+        <div className={styles["rank-section"]}>
           <LiveResultCard type={'f1'} />
         </div>
       </div>
-      <div className="button-section">
+      <div className={styles["button-section"]}>
         <Button
           text="결과 보러 가기"
           type="resultPage"
