@@ -1,7 +1,7 @@
 import styles from './Home.module.css';
 import { useNavigate } from 'react-router-dom';
-import Button from '../components/Button';
-import DescriptionBox from '../components/DescriptionBox';
+import Button from '../components/common/Button';
+import DescriptionBox from '../components/home/DescriptionBox';
 import HoverTeamName from '../components/home/HoverTeamName';
 import { DB_Description, TeamNames } from '../utils/homeData';
 

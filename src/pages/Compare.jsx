@@ -1,5 +1,5 @@
 import Chart from '../components/compare/Chart';
-import Button from '../components/Button';
+import Button from '../components/common/Button';
 import styles from './Compare.module.css';
 import { useState } from 'react';
 import { f1Teams, kboTeams } from '../utils/teamData';
@@ -9,8 +9,16 @@ const Compare = () => {
   const [team1, setTeam1] = useState(null);
   const [team2, setTeam2] = useState(null);
 
-  const changeTypeF1 = () => setType('f1');
-  const changeTypeKBO = () => setType('baseball');
+  const changeTypeF1 = () => {
+    setType('f1');
+    setTeam1(null);
+    setTeam2(null);
+  };
+  const changeTypeKBO = () => {
+    setType('baseball');
+    setTeam1(null);
+    setTeam2(null);
+  };
 
   const onSelectTeam1 = (e) => {
     const selectedName = e.target.value;
@@ -37,15 +45,17 @@ const Compare = () => {
         <p>두 팀의 전력을 한눈에 비교해 보세요.</p>
       </div>
       <div className={styles['button-section']}>
-        <Button onClick={changeTypeF1} text="F1팀 통계" type="f1" />
-        <Button onClick={changeTypeKBO} text="KBO팀 통계" type="baseball" />
+        <Button onClick={changeTypeF1} text="F1팀 통계" type="compare-f1" />
+        <Button
+          onClick={changeTypeKBO}
+          text="KBO팀 통계"
+          type="compare-baseball"
+        />
       </div>
       <div className={styles['team-select-section']}>
         팀1 :{' '}
         <select onChange={onSelectTeam1}>
-          <option value="" disabled selected>
-            선택
-          </option>
+          <option value="">선택</option>
           {type === 'f1'
             ? f1Teams.map((team) => (
                 <option key={team.id} value={team.name}>
@@ -60,9 +70,7 @@ const Compare = () => {
         </select>
         팀2 :{' '}
         <select onChange={onSelectTeam2}>
-          <option value="" disabled selected>
-            선택
-          </option>
+          <option value="">선택</option>
           {type === 'f1'
             ? f1Teams.map((team) => (
                 <option key={team.id} value={team.name}>

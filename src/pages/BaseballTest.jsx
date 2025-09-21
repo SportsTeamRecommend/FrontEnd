@@ -1,6 +1,6 @@
 import WeightSlider from '../components/test/WeightSlider';
 import LiveResultCard from '../components/test/LiveResultCard';
-import Button from '../components/Button';
+import Button from '../components/common/Button';
 import styles from './BaseballTest.module.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -20,17 +20,17 @@ const BaseballTest = () => {
   };
 
   return (
-    <div className={styles["baseball-test-page"]}>
-      <div className={styles["baseball-test-title"]}>BaseballTest</div>
-      <div className={styles["test-container"]}>
-        <div className={styles["slider-section"]}>
+    <div className={styles['baseball-test-page']}>
+      <div className={styles['baseball-test-title']}>BaseballTest</div>
+      <div className={styles['test-container']}>
+        <div className={styles['slider-section']}>
           <WeightSlider labels={baseballSliderLabels} />
         </div>
-        <div className={styles["rank-section"]}>
+        <div className={styles['rank-section']}>
           <LiveResultCard type={'baseball'} />
         </div>
       </div>
-      <div className={styles["button-section"]}>
+      <div className={styles['button-section']}>
         <Button
           text="결과 보러 가기"
           type="resultPage"
