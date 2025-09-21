@@ -40,6 +40,9 @@ const Chart = ({ team1, team2 }) => {
         display: true,
         text: '팀 전력 비교',
         color: '#e0e0e0',
+        font: {
+          size: 20,
+        },
       },
     },
     scales: {
@@ -92,7 +95,7 @@ const Chart = ({ team1, team2 }) => {
   };
 
   return (
-    <div style={{ width: '100%', height: '100%' }}>
+    <div style={{ width: '70vw', height: '400px' }}>
       <Bar options={options} data={data} />
     </div>
   );
