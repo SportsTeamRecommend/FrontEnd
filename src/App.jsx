@@ -5,6 +5,7 @@ import F1Test from './pages/F1Test';
 import BaseballTest from './pages/BaseballTest';
 import Result from './pages/Result';
 import Compare from './pages/Compare';
+import Statistics from './pages/Statistics';
 import Layout from './Layout';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/test/baseball" element={<BaseballTest />}></Route>
           <Route path="/result" element={<Result />}></Route>
           <Route path="/compare" element={<Compare />}></Route>
+          <Route path="/statistics" element={<Statistics />}></Route>
         </Route>
       </Routes>
     </>
