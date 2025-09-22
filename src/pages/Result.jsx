@@ -1,5 +1,7 @@
+import styles from './Result.module.css';
+
 const Result = () => {
-  return <div>Result</div>;
+  return <div className={styles['result-page']}>Result</div>;
 };
 
 export default Result;
