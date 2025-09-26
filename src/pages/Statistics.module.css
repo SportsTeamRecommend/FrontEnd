@@ -20,41 +20,56 @@
 
 /* Top3 카드부분 */
 .priceGrid {
-  display: grid;
-  grid-template-columns: 3fr;
+  display: flex;
   gap: 40px;
+  align-items: flex-end;
+  min-height: 22vh; /* 등수카드 최소 높이 */
 }
+
 .priceCard {
   display: flex;
   flex-direction: column;
   align-items: center;
-
   width: 22vh;
+  height: 12vh;
   padding: 12px;
   border-radius: 10px;
   background: rgba(55, 65, 81, 0.86);
 }
+
+/* 1등 */
+.rank1 {
+  height: 18vh;
+}
+
+/* 2등 */
+.rank2 {
+  height: 15vh;
+}
+
 .boxInCard {
   display: flex;
   flex-direction: column;
   margin: 20px;
 }
 
-.secondContent {
+.secondContent,
+.thirdContent {
   display: flex;
   align-items: center;
+  justify-content: center;
+  margin-top: 50px;
 }
-.secondContent h1 {
-  font-weight: 900;
+
+.secondContent h1,
+.thirdContent h1 {
+  font-weight: 800;
 }
 
 .Grid,
 .secondContent {
   display: flex;
   flex-direction: column;
-}
-.priceGrid {
-  display: flex;
 }
 
 .btnContainer {

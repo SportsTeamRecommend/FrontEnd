@@ -3,9 +3,61 @@ import { useState } from 'react';
 import styles from './Statistics.module.css';
 
 import Button from '../components/common/Button';
+import GradeCard from '../components/statistics/GradeCard';
 
 const Statistics = () => {
   const [type, setType] = useState('f1');
+
+  // TODO: API에서 실제 데이터를 받아와야 합니다.
+  const f1TopTeams = [
+    {
+      rank: 2,
+      icon: 'icon',
+      teamName: 'Oracle Redbull Racing',
+      recommendations: '1,247',
+      likes: '26.7%',
+    },
+    {
+      rank: 1,
+      icon: 'icon',
+      teamName: 'Ferrari',
+      recommendations: '1,582',
+      likes: '31.2%',
+    },
+    {
+      rank: 3,
+      icon: 'icon',
+      teamName: 'McLaren',
+      recommendations: '980',
+      likes: '19.8%',
+    },
+  ];
+
+  const kboTopTeams = [
+    {
+      rank: 2,
+      icon: 'icon',
+      teamName: 'LG Twins',
+      recommendations: '1,110',
+      likes: '25.5%',
+    },
+    {
+      rank: 1,
+      icon: 'icon',
+      teamName: 'KIA Tigers',
+      recommendations: '1,820',
+      likes: '35.1%',
+    },
+    {
+      rank: 3,
+      icon: 'icon',
+      teamName: 'Doosan Bears',
+      recommendations: '850',
+      likes: '18.2%',
+    },
+  ];
+
+  const topTeams = type === 'f1' ? f1TopTeams : kboTopTeams;
 
   const statisticsF1 = () => {
     setType('f1');
@@ -36,59 +88,21 @@ const Statistics = () => {
         <div className={styles.secondContent}>
           <h1>Top 3</h1>
           <div className={styles.priceGrid}>
-            {/* 2등 카드 */}
-            <div className={styles.priceCard}>
-              {/* 1~3등 카드 크기 다르게 */}
-              <div className={styles.iconBox}>
-                <div className={styles.icon}>icon</div>
-              </div>
-              <div className={styles.teamName}>Oracle Redbull racing</div>
-              <div className={styles.recommandAndHeartGrid}>
-                <div className={styles.boxInCard}>
-                  <div className={styles.text}>추천 횟수</div>
-                  <div className={styles.number1}>1,247</div>
-                </div>
-                <div className={styles.boxInCard}>
-                  <div className={styles.text}>좋아요</div>
-                  <div className={styles.number2}>26.7%</div>
-                </div>
-              </div>
-            </div>
-            {/* 1등 카드 */}
-            <div className={styles.priceCard}>
-              <div className={styles.iconBox}>
-                <div className={styles.icon}>icon</div>
-              </div>
-              <div className={styles.teamName}>Ferrari</div>
-              <div className={styles.recommandAndHeartGrid}>
-                <div className={styles.boxInCard}>
-                  <div className={styles.text}>추천 횟수</div>
-                  <div className={styles.number1}>1,247</div>
-                </div>
-                <div className={styles.boxInCard}>
-                  <div className={styles.text}>좋아요</div>
-                  <div className={styles.number2}>26.7%</div>
-                </div>
-              </div>
-            </div>
-            {/* 3등 카드 */}
-            <div className={styles.priceCard}>
-              <div className={styles.iconBox}>
-                <div className={styles.icon}>icon</div>
-              </div>
-              <div className={styles.teamName}>Mersedes</div>
-              <div className={styles.recommandAndHeartGrid}>
-                <div className={styles.boxInCard}>
-                  <div className={styles.text}>추천 횟수</div>
-                  <div className={styles.number1}>1,247</div>
-                </div>
-                <div className={styles.boxInCard}>
-                  <div className={styles.text}>좋아요</div>
-                  <div className={styles.number2}>26.7%</div>
-                </div>
-              </div>
-            </div>
+            {topTeams.map((team) => (
+              <GradeCard
+                key={team.rank}
+                rank={team.rank}
+                icon={team.icon}
+                teamName={team.teamName}
+                recommendations={team.recommendations}
+                likes={team.likes}
+                styles={styles}
+              />
+            ))}
           </div>
+        </div>
+        <div className={styles.thirdContent}>
+          <h1>전체 통계</h1>
         </div>
       </div>
     </div>
