@@ -1,0 +1,68 @@
+.statisticsContainer {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.firstContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.firstContent h1 {
+  font-weight: bold;
+}
+.firstContent h2 {
+  font-weight: 400;
+}
+
+/* Top3 카드부분 */
+.priceGrid {
+  display: grid;
+  grid-template-columns: 3fr;
+  gap: 40px;
+}
+.priceCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 22vh;
+  padding: 12px;
+  border-radius: 10px;
+  background: rgba(55, 65, 81, 0.86);
+}
+.boxInCard {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.secondContent {
+  display: flex;
+  align-items: center;
+}
+.secondContent h1 {
+  font-weight: 900;
+}
+
+.Grid,
+.secondContent {
+  display: flex;
+  flex-direction: column;
+}
+.priceGrid {
+  display: flex;
+}
+
+.btnContainer {
+  display: flex;
+  gap: 20px;
+}
+
+.recommandAndHeartGrid {
+  display: flex;
+  display: row;
+}
