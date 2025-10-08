@@ -52,9 +52,11 @@ const Statistics = () => {
                 key={team.rank}
                 rank={team.rank}
                 icon={team.icon}
+                img={team.img}
                 teamName={team.teamName}
                 recommendations={team.recommendations}
                 likes={team.likes}
+                color={team.color}
                 styles={styles}
               />
             ))}
@@ -68,9 +70,11 @@ const Statistics = () => {
                 key={team.rank}
                 rank={team.rank}
                 icon={team.icon}
+                img={team.img}
                 teamName={team.teamName}
                 recommendations={team.recommendations}
                 likes={team.likes}
+                color={team.color}
                 styles={styles}
               />
             ))}

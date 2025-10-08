@@ -32,21 +32,53 @@
   align-items: center;
   justify-content: space-between;
 
-  min-height: 18vh;
+  min-height: 22vh;
   padding: 12px;
   border-radius: 10px;
   background: rgba(55, 65, 81, 0.86);
 }
 
+.iconBox {
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
 /* 1등 */
 .rank1 {
-  min-height: 22vh;
+  min-height: 28vh;
 }
-
+.icon.rankIcon1 {
+  width: 90px;
+}
+.iconBox.rankIcon1 {
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+  width: 100px;
+  height: 100px;
+}
 /* 2등 */
 .rank2 {
-  min-height: 20vh;
+  min-height: 25vh;
 }
+.icon.rankIcon2 {
+  width: 70px;
+}
+.iconBox.rankIcon2 {
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+  width: 80px;
+  height: 80px;
+}
+/* 3등 */
+.icon.rankIcon3 {
+  width: 50px;
+}
+.iconBox.rankIcon3 {
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+  width: 60px;
+  height: 60px;
+}
+
 .teamName {
   color: #fff;
   font-family: Inter;
@@ -54,6 +86,8 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .boxInCard {
@@ -93,19 +127,16 @@
   align-items: center;
 }
 
-.iconBox {
-  margin-bottom: 12px;
-  text-align: center;
-}
 .icon {
   font-size: 36px;
   width: 60px;
+  border-radius: 6px;
 }
 
 .recommandAndHeartGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  border-top: 1px solid rgb(0, 0, 0);
+  border-top: 1px solid rgb(250, 250, 250);
 }
 
 .boxInCard {
@@ -145,13 +176,18 @@
 
   padding: 16px 10px;
   margin-bottom: 24px;
+  min-width: 800px;
 }
 .itemInfo {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 16px;
-  margin-right: 100px;
+  margin-right: 120px;
+}
+.textGroup {
+  display: flex;
+  min-width: 40px;
 }
 .itemStats {
   display: flex;
@@ -159,14 +195,30 @@
   gap: 16px;
 }
 
+.iconBox2 {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+}
+
 .grade {
-  font-size: 36px;
+  color: #fffff0;
+  font-family: Inter;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }
 
 .statGroup {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .progressBar {
@@ -178,6 +230,5 @@
 }
 .progressFill {
   height: 100%;
-  background-color: #4a80c3; /* 채워진 부분의 파란색 */
   border-radius: 5px;
 }
