@@ -1,16 +1,16 @@
 // f1
 
 // 이미지들
-import ferrari from './../public/f1-logo/ferrari.svg';
-import mcLaren from './../public/f1-logo/mclaren.svg';
-import mercedes from './../public/f1-logo/mercedes.svg';
-import redbull from './../public/f1-logo/redbull.svg';
-import astonmartin from './../public/f1-logo/astonmartin.png';
-import alpine from './../public/f1-logo/alpine.svg';
-import haas from './../public/f1-logo/haas.svg';
-import sauber from './../public/f1-logo/sauber.svg';
-import williams from './../public/f1-logo/williams.svg';
-import rb from './../public/f1-logo/rb.png';
+import ferrari from './../assets/f1-logo/ferrari.svg';
+import mcLaren from './../assets/f1-logo/mclaren.svg';
+import mercedes from './../assets/f1-logo/mercedes.svg';
+import redbull from './../assets/f1-logo/redbull.svg';
+import astonmartin from './../assets/f1-logo/astonmartin.png';
+import alpine from './../assets/f1-logo/alpine.svg';
+import haas from './../assets/f1-logo/haas.svg';
+import sauber from './../assets/f1-logo/sauber.svg';
+import williams from './../assets/f1-logo/williams.svg';
+import rb from './../assets/f1-logo/rb.png';
 
 export const f1TopTeams = [
   {
@@ -108,16 +108,16 @@ export const f1TopTeams = [
 // kbo
 
 // 이미지들
-import kia from './../public/kbo-logo/kia-tigers.svg';
-import lg from './../public/kbo-logo/lg-twins.svg';
-import doosan from './../public/kbo-logo/doosan-bears.svg';
-import lotte from './../public/kbo-logo/lotte-giants.svg';
-import kiwoom from './../public/kbo-logo/kiwoom-heroes.svg';
-import hanwha from './../public/kbo-logo/hanwha-eagles.svg';
-import samsung from './../public/kbo-logo/samsung-lions.svg';
-import ssg from './../public/kbo-logo/ssg-landers.svg';
-import kt from './../public/kbo-logo/kt-wiz.svg';
-import nc from './../public/kbo-logo/nc-dinos.svg';
+import kia from './../assets/kbo-logo/kia-tigers.svg';
+import lg from './../assets/kbo-logo/lg-twins.svg';
+import doosan from './../assets/kbo-logo/doosan-bears.svg';
+import lotte from './../assets/kbo-logo/lotte-giants.svg';
+import kiwoom from './../assets/kbo-logo/kiwoom-heroes.svg';
+import hanwha from './../assets/kbo-logo/hanwha-eagles.svg';
+import samsung from './../assets/kbo-logo/samsung-lions.svg';
+import ssg from './../assets/kbo-logo/ssg-landers.svg';
+import kt from './../assets/kbo-logo/kt-wiz.svg';
+import nc from './../assets/kbo-logo/nc-dinos.svg';
 
 export const kboTopTeams = [
   {
