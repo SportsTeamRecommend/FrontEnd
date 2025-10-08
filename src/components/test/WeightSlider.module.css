@@ -1,22 +1,9 @@
-/* 컨테이너/카드 스타일은 동일 */
-.weight-slider {
-  background: #1a1f24;
-  padding: 24px;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-  max-width: 520px;
-  color: #e5e7eb;
-  font-family: system-ui, sans-serif;
-
-  width: 500px;
-  height: 800px;
-}
-
 .weight-slider__header h2 {
   margin: 0 0 6px;
   font-size: 24px;
   font-weight: 700;
 }
+
 .weight-slider__header p {
   margin: 0 0 20px;
   color: #9aa3ad;
@@ -34,20 +21,47 @@
   display: grid;
   grid-template-columns: 1fr auto;
   grid-template-areas:
-    'label label'
-    'range value';
+    'label-wrapper label-wrapper'
+    'range value'
+    'checkboxes checkboxes';
   row-gap: 8px;
   column-gap: 12px;
   padding: 14px 18px;
   border-radius: 12px;
-  background: #20262d;
+  background: rgba(37, 50, 67, 0.4);
+}
+
+/* 라벨과 셀렉트를 감싸는 wrapper */
+.weight-slider__label-wrapper {
+  grid-area: label-wrapper;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .weight-slider__label {
-  grid-area: label;
   font-weight: 700;
   color: #ff6259;
 }
+
+/* 연고지 셀렉트 스타일 */
+.weight-slider__select {
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: #2a3037;
+  border: 1px solid #3a4047;
+  color: #e5e7eb;
+  font-size: 13px;
+  cursor: pointer;
+  outline: none;
+}
+
+.weight-slider__select:hover {
+  border-color: #ff6259;
+}
+
 .weight-slider__value {
   grid-area: value;
   align-self: center;
@@ -60,34 +74,54 @@
   text-align: center;
 }
 
-/* ===== 슬라이더: 프리픽스 없이 가능한 최대한 깔끔하게 ===== */
+/* 슬라이더 */
 .weight-slider__range {
   grid-area: range;
   width: 100%;
-  /* accent-color: 지원 브라우저에서 thumb/채움색을 한 번에 통일 */
-  accent-color: #ff6259; /* ✅ 크롬/엣지/사파리/파폭 최신 지원 */
-  background: transparent; /* 기본 배경 제거(브라우저가 알아서 렌더) */
-  height: 28px; /* 클릭 영역 넓혀 접근성 개선 */
+  accent-color: #ff6259;
+  background: transparent;
+  height: 28px;
   margin: 0;
   cursor: pointer;
-  outline: none; /* 파란 포커스 링 제거 */
-  /* 살짝 세로 스케일로 ‘두꺼운 트랙’ 느낌 (thumb도 같이 굵어지지만 깔끔) */
+  outline: none;
   transform: scaleY(1.15);
   transform-origin: center;
 }
 
-/* 가장자리 잘림 방지용 여백(thumb이 모서리에 닿는 느낌 완화) */
-.weight-slider__range {
-  padding-right: 10px;
-  box-sizing: border-box;
+/* 체크박스(라디오) 영역 */
+.weight-slider__checkboxes {
+  grid-area: checkboxes;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid #2a3037;
 }
 
-/* 포커스시 파란색 하이라이트 최소화(표준 속성만 사용) */
-.weight-slider__range:focus-visible {
-  outline: none;
+/* 라디오 버튼 라벨 스타일 */
+.weight-slider__checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: #2a3037;
+  border: 1px solid #3a4047;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s;
+  user-select: none;
 }
 
-/* Hover 시 살짝 밝게(표준만 사용) */
-.weight-slider__item:hover {
-  filter: brightness(1.02);
+.weight-slider__checkbox-label:hover {
+  border-color: #ff6259;
+  background: #2d3339;
+}
+
+.weight-slider__checkbox-label input[type='radio'] {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  accent-color: #ff6259;
 }
