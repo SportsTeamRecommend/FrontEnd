@@ -1,0 +1,234 @@
+.statisticsContainer {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.firstContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.firstContent h1 {
+  font-weight: bold;
+}
+.firstContent h2 {
+  font-weight: 400;
+}
+
+/* Top3 카드부분 */
+.priceGrid {
+  display: flex;
+  gap: 40px;
+  align-items: flex-end;
+  min-height: 24vh; /* 등수카드 최소 높이 */
+}
+
+.priceCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 22vh;
+  padding: 12px;
+  border-radius: 10px;
+  background: rgba(55, 65, 81, 0.86);
+}
+
+.iconBox {
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+/* 1등 */
+.rank1 {
+  min-height: 28vh;
+}
+.icon.rankIcon1 {
+  width: 90px;
+}
+.iconBox.rankIcon1 {
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+  width: 100px;
+  height: 100px;
+}
+/* 2등 */
+.rank2 {
+  min-height: 25vh;
+}
+.icon.rankIcon2 {
+  width: 70px;
+}
+.iconBox.rankIcon2 {
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+  width: 80px;
+  height: 80px;
+}
+/* 3등 */
+.icon.rankIcon3 {
+  width: 50px;
+}
+.iconBox.rankIcon3 {
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+  width: 60px;
+  height: 60px;
+}
+
+.teamName {
+  color: #fff;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.boxInCard {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.secondContent,
+.thirdContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  gap: 20px;
+}
+
+.secondContent h1,
+.thirdContent h1 {
+  font-weight: 800;
+}
+
+.Grid,
+.secondContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.btnContainer {
+  display: flex;
+  gap: 20px;
+}
+
+.GradeAndName {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon {
+  font-size: 36px;
+  width: 60px;
+  border-radius: 6px;
+}
+
+.recommandAndHeartGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-top: 1px solid rgb(250, 250, 250);
+}
+
+.boxInCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 4px;
+}
+
+.number1 {
+  color: #ffcc00;
+}
+.number2 {
+  color: #9cc2ff;
+}
+
+/* thridContent */
+.thirdContent {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ------------------ GradeCard2 ----------------- */
+
+.priceGrid2 {
+  display: flex;
+  flex-direction: column;
+}
+.priceCard2 {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px;
+  border-radius: 10px;
+  background: rgba(55, 65, 81, 0.86);
+
+  padding: 16px 10px;
+  margin-bottom: 24px;
+  min-width: 800px;
+}
+.itemInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-right: 120px;
+}
+.textGroup {
+  display: flex;
+  min-width: 40px;
+}
+.itemStats {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.iconBox2 {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+}
+
+.grade {
+  color: #fffff0;
+  font-family: Inter;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.statGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.progressBar {
+  width: 120px;
+  height: 10px;
+  background-color: #6c757d;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.progressFill {
+  height: 100%;
+  border-radius: 5px;
+}
