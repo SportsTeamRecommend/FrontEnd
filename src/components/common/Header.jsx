@@ -1,61 +1,41 @@
-import { NavLink } from 'react-router-dom';
-import styles from './Header.module.css';
+import {
+  HeaderContainer,
+  HeaderTop,
+  LogoBox,
+  SiteTitle,
+  NavBar,
+  NavList,
+  NavItem,
+  StyledNavLink,
+} from './Header.styles.js';
 
 const Header = () => {
   return (
-    <header className={styles.header}>
+    <HeaderContainer>
       {/* 상단 로고 영역 */}
-      <div className={styles.headerTop}>
-        <div className={styles.logoBox}>로고</div>
-        <h1 className={styles.siteTitle}>MY TEAM FINDER</h1>
-      </div>
+      <HeaderTop>
+        <LogoBox>로고</LogoBox>
+        <SiteTitle>MY TEAM FINDER</SiteTitle>
+      </HeaderTop>
 
       {/* 네비게이션 영역 */}
-      <nav className={styles.navBar}>
-        <ul>
-          <li>
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                `${styles.navItem} ${isActive ? styles.active : ''}`
-              }
-            >
-              홈
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/statistics"
-              className={({ isActive }) =>
-                `${styles.navItem} ${isActive ? styles.active : ''}`
-              }
-            >
-              통계
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/compare"
-              className={({ isActive }) =>
-                `${styles.navItem} ${isActive ? styles.active : ''}`
-              }
-            >
-              비교
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/result"
-              className={({ isActive }) =>
-                `${styles.navItem} ${isActive ? styles.active : ''}`
-              }
-            >
-              결과
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
-    </header>
+      <NavBar>
+        <NavList>
+          <NavItem>
+            <StyledNavLink to="/">홈</StyledNavLink>
+          </NavItem>
+          <NavItem>
+            <StyledNavLink to="/statistics">통계</StyledNavLink>
+          </NavItem>
+          <NavItem>
+            <StyledNavLink to="/compare">비교</StyledNavLink>
+          </NavItem>
+          <NavItem>
+            <StyledNavLink to="/result">결과</StyledNavLink>
+          </NavItem>
+        </NavList>
+      </NavBar>
+    </HeaderContainer>
   );
 };
 
