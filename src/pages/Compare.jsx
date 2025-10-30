@@ -45,10 +45,10 @@ const Compare = () => {
         <p>두 팀의 전력을 한눈에 비교해 보세요.</p>
       </div>
       <div className={styles['button-section']}>
-        <Button onClick={changeTypeF1} text="F1팀 통계" type="compare-f1" />
+        <Button onClick={changeTypeF1} text="F1팀 비교" type="compare-f1" />
         <Button
           onClick={changeTypeKBO}
-          text="KBO팀 통계"
+          text="KBO팀 비교"
           type="compare-baseball"
         />
       </div>

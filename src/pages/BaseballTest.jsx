@@ -17,7 +17,7 @@ const BaseballTest = () => {
 
   return (
     <div className={styles['baseball-test-page']}>
-      <h1 className={styles['baseball-test-title']}>Baseball</h1>
+      <h1 className={styles['baseball-test-title']}>KBO</h1>
       <div className={styles['test-container']}>
         <div className={styles['slider-section']}>
           <WeightSlider
@@ -27,7 +27,7 @@ const BaseballTest = () => {
           />
         </div>
         <div className={styles['rank-section']}>
-          <LiveResultCard type={'baseball'} />
+          <LiveResultCard type={'kbo'} />
           <Button
             text="결과 보러 가기"
             type="resultPage"

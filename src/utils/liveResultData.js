@@ -1,12 +1,34 @@
+import ferrari from './../assets/f1-logo/ferrari.svg';
+import mercedes from './../assets/f1-logo/mercedes.svg';
+import redbull from './../assets/f1-logo/redbull.svg';
+// import mcLaren from './../assets/f1-logo/mclaren.svg';
+// import astonmartin from './../assets/f1-logo/astonmartin.png';
+// import alpine from './../assets/f1-logo/alpine.svg';
+// import haas from './../assets/f1-logo/haas.svg';
+// import sauber from './../assets/f1-logo/sauber.svg';
+// import williams from './../assets/f1-logo/williams.svg';
+// import rb from './../assets/f1-logo/rb.png';
+
+import doosan from './../assets/kbo-logo/doosan-bears.svg';
+import lotte from './../assets/kbo-logo/lotte-giants.svg';
+import nc from './../assets/kbo-logo/nc-dinos.svg';
+// import kiwoom from './../assets/kbo-logo/kiwoom-heroes.svg';
+// import hanwha from './../assets/kbo-logo/hanwha-eagles.svg';
+// import samsung from './../assets/kbo-logo/samsung-lions.svg';
+// import ssg from './../assets/kbo-logo/ssg-landers.svg';
+// import kt from './../assets/kbo-logo/kt-wiz.svg';
+// import kia from './../assets/kbo-logo/kia-tigers.svg';
+// import lg from './../assets/kbo-logo/lg-twins.svg';
+
 export const liveResultData = {
   f1: [
-    { team: 'Red Bull Racing' },
-    { team: 'Mercedes-AMG' },
-    { team: 'Ferrari' },
+    { name: 'Oracle Red Bull Racing', img: redbull },
+    { name: 'Mercedes-AMG Petronas', img: mercedes },
+    { name: 'Ferrari', img: ferrari },
   ],
-  baseball: [
-    { team: '롯데 자이언츠' },
-    { team: '두산 베어스' },
-    { team: 'NC 다이노스' },
+  kbo: [
+    { name: 'Lotte Giants', img: lotte },
+    { name: 'Doosan Bears', img: doosan },
+    { name: 'NC Dinos', img: nc },
   ],
 };

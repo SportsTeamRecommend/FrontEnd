@@ -15,7 +15,10 @@ export const baseballSliderLabels = [
   '연고지',
   '팬덤 규모',
 ];
-
+/**
+ * string 타입으로 백엔드에 전달
+ * NONE, HIGH, LOW
+ */
 export const f1SliderCheckobx = [
   ['강팀', '약팀', '상관없음'],
   ['강', '약', '상관없음'],

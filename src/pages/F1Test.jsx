@@ -13,7 +13,7 @@ const F1Test = () => {
 
   return (
     <div className={styles['f1test-page']}>
-      <h1 className={styles['f1test-title']}>F1</h1>
+      <h1 className={styles['f1test-title']}>F1 테스트</h1>
       <div className={styles['test-container']}>
         <div className={styles['slider-section']}>
           <WeightSlider
