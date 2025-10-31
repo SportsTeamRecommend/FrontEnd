@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import ResultCard from '../components/result/ResultCard';
+import Header from '../components/result/Header';
 
 const ResultContainer = styled.div`
   color: white;
@@ -9,14 +10,14 @@ const ResultContainer = styled.div`
   align-items: center;
   justify-content: center;
 `;
-const Header = styled.div`
-  background-color: red;
-  display: flex;
-  align-items: center;
-`;
 
 const Result = () => {
-  return <ResultCard />;
+  return (
+    <ResultContainer>
+      <Header />
+      <ResultCard />
+    </ResultContainer>
+  );
 };
 
 export default Result;
