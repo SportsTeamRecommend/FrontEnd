@@ -1,13 +1,19 @@
 import WeightSlider from '../components/test/WeightSlider';
 import LiveResultCard from '../components/test/LiveResultCard';
 import Button from '../components/common/Button';
-import styles from './BaseballTest.module.css';
 import { useNavigate } from 'react-router-dom';
 import {
   baseballSliderLabels,
   baseballSliderCheckobx,
   region,
 } from '../utils/testData';
+import {
+  Container,
+  Title,
+  TestContainer,
+  RankSection,
+  SliderSection,
+} from './TestPage.styles';
 
 const BaseballTest = () => {
   const nav = useNavigate();
@@ -16,26 +22,26 @@ const BaseballTest = () => {
   };
 
   return (
-    <div className={styles['baseball-test-page']}>
-      <h1 className={styles['baseball-test-title']}>KBO</h1>
-      <div className={styles['test-container']}>
-        <div className={styles['slider-section']}>
+    <Container>
+      <Title>KBO</Title>
+      <TestContainer>
+        <SliderSection>
           <WeightSlider
             labels={baseballSliderLabels}
             region={region}
             checkLabels={baseballSliderCheckobx}
           />
-        </div>
-        <div className={styles['rank-section']}>
+        </SliderSection>
+        <RankSection>
           <LiveResultCard type={'kbo'} />
           <Button
             text="결과 보러 가기"
             type="resultPage"
             onClick={goResultPage}
           />
-        </div>
-      </div>
-    </div>
+        </RankSection>
+      </TestContainer>
+    </Container>
   );
 };
 
