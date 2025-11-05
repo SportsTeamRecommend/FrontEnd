@@ -1,25 +1,59 @@
-import styles from './LiveResultCard.module.css';
+import styled from 'styled-components';
 import { liveResultData } from '../../utils/liveResultData';
 import { getTeamColor } from '../../utils/teamColor';
 
+const Card = styled.div``;
+
+const Title = styled.h2`
+  margin: 0 0 6px;
+  font-size: 24px;
+  font-weight: 700;
+`;
+
+const List = styled.ol`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0;
+  list-style: none;
+`;
+
+const Item = styled.li`
+  display: flex;
+  gap: 30px;
+  padding: 15px;
+  border-radius: 12px;
+  align-items: center;
+  height: 80px;
+  font-size: 18px;
+  font-weight: 500;
+`;
+
+const Span = styled.span``;
+
+const Image = styled.img`
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+`;
+
 const LiveResultCard = ({ type }) => {
   return (
-    <div className={styles.card}>
-      <h2 className={styles.title}>Top 3</h2>
-      <ol className={styles.list}>
+    <Card>
+      <Title>Top 3</Title>
+      <List>
         {liveResultData[type].map((item, idx) => (
-          <li
+          <Item
             key={idx}
-            className={styles.item}
             style={{ backgroundColor: getTeamColor(type, item.name) }}
           >
-            <span>{idx + 1}</span>
-            <img src={item.img} alt={item.team} className={styles.image} />
-            <span>{item.name}</span>
-          </li>
+            <Span>{idx + 1}</Span>
+            <Image src={item.img} alt={item.team} />
+            <Span>{item.name}</Span>
+          </Item>
         ))}
-      </ol>
-    </div>
+      </List>
+    </Card>
   );
 };
 

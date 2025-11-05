@@ -1,5 +1,17 @@
-import styles from './WeightSlider.module.css';
 import { useState } from 'react';
+import {
+  Container,
+  Header,
+  List,
+  Item,
+  LabelWrapper,
+  LabelText,
+  Select,
+  Range,
+  Value,
+  CheckboxGroup,
+  CheckboxLabel,
+} from './WeightSlider.styles';
 
 const WeightSlider = ({ labels, checkLabels, region }) => {
   const [values, setValues] = useState(Array(labels.length).fill(0));
@@ -21,19 +33,19 @@ const WeightSlider = ({ labels, checkLabels, region }) => {
   };
 
   return (
-    <div className={styles['weight-slider']}>
-      <div className={styles['weight-slider__header']}>
+    <Container>
+      <Header>
         <h2>팀에서 무엇을 중요하게 생각하나요?</h2>
         <p>슬라이더를 오른쪽으로 움직여 본인의 성향을 표현해 보세요</p>
-      </div>
-      <div className={styles['weight-slider__list']}>
+      </Header>
+
+      <List>
         {labels.map((label, idx) => (
-          <div key={idx} className={styles['weight-slider__item']}>
-            <div className={styles['weight-slider__label-wrapper']}>
-              <span className={styles['weight-slider__label']}>{label}</span>
+          <Item key={idx}>
+            <LabelWrapper>
+              <LabelText>{label}</LabelText>
               {label === '연고지' && region && (
-                <select
-                  className={styles['weight-slider__select']}
+                <Select
                   value={selectedRegion}
                   onChange={(e) => setSelectedRegion(e.target.value)}
                 >
@@ -43,11 +55,11 @@ const WeightSlider = ({ labels, checkLabels, region }) => {
                       {r}
                     </option>
                   ))}
-                </select>
+                </Select>
               )}
-            </div>
-            <input
-              className={styles['weight-slider__range']}
+            </LabelWrapper>
+
+            <Range
               type="range"
               value={values[idx]}
               min="0"
@@ -55,15 +67,15 @@ const WeightSlider = ({ labels, checkLabels, region }) => {
               step="0.1"
               onChange={(e) => handleChange(idx, Number(e.target.value))}
             />
-            <span className={styles['weight-slider__value']}>
-              {values[idx].toFixed(1)}
-            </span>
+
+            <Value>{values[idx].toFixed(1)}</Value>
+
             {checkLabels[idx] && (
-              <div className={styles['weight-slider__checkboxes']}>
+              <CheckboxGroup>
                 {checkLabels[idx].map((checkLabel, checkIdx) => (
-                  <label
+                  <CheckboxLabel
                     key={checkIdx}
-                    className={`${styles['weight-slider__checkbox-label']} ${selectedOptions[idx] === checkIdx ? styles['weight-slider__checkbox-label--selected'] : ''}`}
+                    selected={selectedOptions[idx] === checkIdx}
                   >
                     <input
                       type="radio"
@@ -72,14 +84,14 @@ const WeightSlider = ({ labels, checkLabels, region }) => {
                       onChange={() => handleOptionChange(idx, checkIdx)}
                     />
                     <span>{checkLabel}</span>
-                  </label>
+                  </CheckboxLabel>
                 ))}
-              </div>
+              </CheckboxGroup>
             )}
-          </div>
+          </Item>
         ))}
-      </div>
-    </div>
+      </List>
+    </Container>
   );
 };
 
