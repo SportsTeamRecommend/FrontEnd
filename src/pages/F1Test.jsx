@@ -9,7 +9,7 @@ import {
   TestContainer,
   RankSection,
   SliderSection,
-} from './TestPageCache.styles';
+} from './TestPage.styles';
 
 const F1Test = () => {
   const nav = useNavigate();
