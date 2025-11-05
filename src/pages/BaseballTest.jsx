@@ -13,7 +13,7 @@ import {
   TestContainer,
   RankSection,
   SliderSection,
-} from './testPage.styles';
+} from './TestPageCache.styles';
 
 const BaseballTest = () => {
   const nav = useNavigate();
