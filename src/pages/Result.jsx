@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 import ResultCard from '../components/result/ResultCard';
 import Header from '../components/result/Header';
+import TeamInfoSection from '../components/result/TeamInfoSection';
+import ResultActions from '../components/result/ResultActions';
 
 const ResultContainer = styled.div`
   color: white;
@@ -16,6 +18,8 @@ const Result = () => {
     <ResultContainer>
       <Header />
       <ResultCard />
+      <ResultActions />
+      <TeamInfoSection />
     </ResultContainer>
   );
 };
