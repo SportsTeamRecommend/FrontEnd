@@ -8,7 +8,7 @@ const PriceCard = styled.div`
   background: ${({ $color }) => $color || 'rgba(55, 65, 81, 0.86)'};
   padding: 16px 10px;
   margin-bottom: 24px;
-  min-width: 800px;
+  min-width: 500px;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
 `;
 
@@ -17,7 +17,7 @@ const ItemInfo = styled.div`
   align-items: center;
   justify-content: center;
   gap: 16px;
-  margin-right: 120px;
+  margin-right: 20px;
 `;
 
 const TextGroup = styled.div`
