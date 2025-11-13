@@ -41,9 +41,9 @@ const SportButton = styled.button`
         `;
       case 'resultPage':
         return css`
-          background-color: rgba(31, 41, 55, 0.4);
+          background-color: rgb(239, 68, 68);
           color: white;
-          height: 30px;
+          height: 50px;
           width: 250px;
         `;
       case 'statistics-f1':

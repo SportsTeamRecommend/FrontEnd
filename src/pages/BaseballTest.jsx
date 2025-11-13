@@ -30,6 +30,7 @@ const BaseballTest = () => {
             labels={baseballSliderLabels}
             region={region}
             checkLabels={baseballSliderCheckobx}
+            type={'kbo'}
           />
         </SliderSection>
         <RankSection>
