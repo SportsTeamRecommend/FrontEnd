@@ -35,6 +35,7 @@ export const RankSection = styled.div`
   gap: 20px;
   width: 20%;
   justify-content: space-around;
+  align-items: center;
 `;
 
 export const SliderSection = styled.div`

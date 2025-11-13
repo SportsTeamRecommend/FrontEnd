@@ -19,16 +19,21 @@ export const f1Team = {
   'Aston Martin Aramco': '#229971',
   Alpine: '#00A1E8',
   'Haas F1 Team': '#9C9FA2',
-  'Kick Sauber (Stake F1 Team)': '#01C00E',
+  'Kick Sauber': '#01C00E',
   Williams: '#1868DB',
-  'Visa Cash App RB (RB F1 Team)': '#6C98FF',
+  'Racing Bulls': '#6C98FF',
 };
 
 export const getTeamColor = (league, team) => {
+  if (league === 'f1') {
+    const foundKey = Object.keys(f1Team).find(
+      (key) =>
+        key.toLowerCase().includes(team.toLowerCase()) ||
+        team.toLowerCase().includes(key.toLowerCase())
+    );
+    return f1Team[foundKey];
+  }
   if (league === 'kbo') {
     return kboTeam[team];
-  }
-  if (league === 'f1') {
-    return f1Team[team];
   }
 };

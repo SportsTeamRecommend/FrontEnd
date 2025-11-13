@@ -1,8 +1,10 @@
 import styled from 'styled-components';
-import { liveResultData } from '../../utils/liveResultData';
 import { getTeamColor } from '../../utils/teamColor';
+import { getTeamLogo, getTeamName } from '../../utils/liveResultData';
 
-const Card = styled.div``;
+const Card = styled.div`
+  width: 90%;
+`;
 
 const Title = styled.h2`
   margin: 0 0 6px;
@@ -37,16 +39,19 @@ const Image = styled.img`
   border-radius: 8px;
 `;
 
-const LiveResultCard = ({ type }) => {
+const LiveResultCard = ({ type, data }) => {
+  // API 데이터 + 이미지 + 색상 매핑
+  const mapped = data.map((team) => ({
+    name: getTeamName(type, team.name),
+    img: getTeamLogo(type, team.name),
+    color: getTeamColor(type, team.name),
+  }));
   return (
     <Card>
       <Title>Top 3</Title>
       <List>
-        {liveResultData[type].map((item, idx) => (
-          <Item
-            key={idx}
-            style={{ backgroundColor: getTeamColor(type, item.name) }}
-          >
+        {mapped.map((item, idx) => (
+          <Item key={idx} style={{ backgroundColor: item.color }}>
             <Span>{idx + 1}</Span>
             <Image src={item.img} alt={item.team} />
             <Span>{item.name}</Span>

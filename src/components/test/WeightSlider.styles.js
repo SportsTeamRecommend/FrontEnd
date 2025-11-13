@@ -110,7 +110,7 @@ export const CheckboxLabel = styled.label`
   gap: 6px;
   padding: 6px 12px;
   background: #2a3037;
-  border: 1px solid ${({ selected }) => (selected ? '#ff6259' : '#3a4047')};
+  border: 1px solid #3a4047;
   border-radius: 8px;
   cursor: pointer;
   font-size: 13px;

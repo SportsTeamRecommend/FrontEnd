@@ -9,7 +9,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
+  gap: 25px;
   height: 100vh;
 `;
 
@@ -28,6 +28,7 @@ const TeamSelect = styled.div`
   display: flex;
   align-items: center;
   gap: 15px;
+  margin-top: 15px;
 `;
 
 const TeamOption = styled.select`
