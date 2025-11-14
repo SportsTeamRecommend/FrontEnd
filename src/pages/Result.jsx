@@ -12,13 +12,21 @@ const ResultContainer = styled.div`
   align-items: center;
   justify-content: center;
 `;
+const LineContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 const Result = () => {
   return (
     <ResultContainer>
       <Header />
-      <ResultCard />
-      <ResultActions />
+      <LineContainer>
+        <ResultCard />
+        <ResultActions />
+      </LineContainer>
+
       <TeamInfoSection />
     </ResultContainer>
   );

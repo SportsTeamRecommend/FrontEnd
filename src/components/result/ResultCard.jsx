@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import StatCard from './StatCard';
 import PlayerCard from './PlayerCard';
 
-import { allTimeStats, seasonStats } from '../../utils/statData';
-
 import redbull from './../../assets/f1-logo/redbull.svg';
 import max from './../../assets/max.webp';
 import yuki from './../../assets/yuki.webp';
+import { getAllTeamData } from '../../utils/allTeamData';
+import { useEffect, useState } from 'react';
 
 const ResultCardWrapper = styled.div`
   display: flex;
@@ -18,7 +18,6 @@ const ResultCardWrapper = styled.div`
   border-radius: 10px;
   background: rgba(55, 65, 81, 0.4);
 `;
-
 const Header = styled.div`
   display: flex;
   flex-direction: row;
@@ -58,7 +57,6 @@ const TeamDescription = styled.span`
 
   color: #e0e0e0;
 `;
-
 const Content = styled.div`
   display: grid;
   gap: 24px;
@@ -77,13 +75,11 @@ const Content = styled.div`
       'stats2';
   }
 `;
-
 const Footer = styled.div`
   display: flex;
   gap: 45px;
   margin-top: 14px;
 `;
-
 const Button = styled.button`
   width: 243px;
   height: 31px;
@@ -105,44 +101,81 @@ const Button = styled.button`
     props.like ? 'rgba(248, 92, 92, 0.93)' : 'rgba(86, 91, 98, 0.86)'};
 `;
 
-const driverData1 = {
-  name: 'Max Verrstappen',
-  imageUrl: max, // 이미지 경로
-  infoList: [
-    {
-      icon: '🇳🇱',
-      label: '네덜란드',
-    },
-    {
-      icon: '📅',
-      label: '2015년 데뷔',
-    },
-    {
-      icon: '🎂',
-      label: '1997-09-30',
-    },
-  ],
-};
-const driverData2 = {
-  name: 'Yuki Tsunoda',
-  imageUrl: yuki,
-  infoList: [
-    {
-      icon: '🇯🇵',
-      label: '일본',
-    },
-    {
-      icon: '📅',
-      label: '2021년 데뷔',
-    },
-    {
-      icon: '🎂',
-      label: '2000-05-11',
-    },
-  ],
-};
-
 const ResultCard = () => {
+  const [teamData, setTeamData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getAllTeamData('Red Bull Racing');
+        setTeamData(data);
+      } catch (error) {
+        console.error('Error fetching team data in ResultCard:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (!teamData) return;
+  console.log(teamData);
+
+  const driverData1 = {
+    name: teamData.drivers[0].name,
+    // imageUrl: teamData.drivers[0].imageUrl, // 이미지 경로 (api), 수정 전이므로 현재는 로컬 데이터 사용
+    imageUrl: max,
+    infoList: [
+      {
+        icon: '🇳🇱',
+        label: '네덜란드',
+      },
+      {
+        icon: '📅',
+        label: '2015년 데뷔',
+      },
+      {
+        icon: '🎂',
+        label: teamData.drivers[0].dateOfBirth,
+      },
+    ],
+  };
+  const driverData2 = {
+    name: teamData.drivers[1].name,
+    imageUrl: yuki,
+    infoList: [
+      {
+        icon: '🇯🇵',
+        label: '일본',
+      },
+      {
+        icon: '📅',
+        label: '2021년 데뷔',
+      },
+      {
+        icon: '🎂',
+        label: teamData.drivers[1].dateOfBirth,
+      },
+    ],
+  };
+  const allTimeStats = [
+    { label: 'WCC', value: teamData.worldChampionship },
+    {
+      label: 'WDC', // 이거 어떻게 처리할지 얘기 필요
+      value:
+        teamData.drivers[0].driverChampionship +
+        teamData.drivers[1].driverChampionship,
+    },
+    { label: '우승', value: teamData.careerWins },
+    { label: '포디움', value: teamData.careerPodiums },
+  ];
+
+  const seasonStats = [
+    { label: '우승', value: teamData.seasonWins },
+    { label: '포디움', value: teamData.seasonPodiums },
+    { label: '순위', value: 3 }, // ?
+    { label: '폴포지션', value: 7 }, // ?
+  ];
+
   return (
     <ResultCardWrapper>
       <Header>
@@ -151,7 +184,7 @@ const ResultCard = () => {
         </Logo>
 
         <Text>
-          <TeamName>Red Bull Racing</TeamName>
+          <TeamName>{teamData.name}</TeamName>
           <TeamDescription>승부욕과 커리어의 정점</TeamDescription>
         </Text>
       </Header>

@@ -2,10 +2,9 @@ import styled from 'styled-components';
 
 const CardDescriptionWrapper = styled.div`
   padding-top: 10px;
-  gap: 4px;
-
-  width: 85%;
   margin-bottom: 70px;
+  gap: 4px;
+  width: 97%;
 `;
 
 const DescriptionGroup = styled.div`
@@ -29,6 +28,7 @@ const Title = styled(BaseText)`
 const Description = styled(BaseText)`
   font-size: 10px;
   line-height: 14px;
+  margin-bottom: 10px;
 `;
 
 const ButtonGroup = styled.div`

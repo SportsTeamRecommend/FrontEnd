@@ -21,7 +21,7 @@ const DriverImage = styled.img`
   width: 180px;
   height: 180px;
   border-radius: 10px; /* 이미지 모서리 둥글게 */
-  object-fit: cover; /* 이미지 비율 유지 */
+  display: block;
 `;
 
 // 3. 이름 + 상세 정보 리스트를 감싸는 Wrapper
