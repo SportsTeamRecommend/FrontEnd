@@ -75,39 +75,15 @@ const Content = styled.div`
       'stats2';
   }
 `;
-const Footer = styled.div`
-  display: flex;
-  gap: 45px;
-  margin-top: 14px;
-`;
-const Button = styled.button`
-  width: 243px;
-  height: 31px;
-  flex-shrink: 0;
 
-  color: white;
-  border-radius: 10px;
-  border: 2px solid #fff;
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-
-  text-align: center;
-  font-family: Inter;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-
-  background: ${(props) =>
-    props.like ? 'rgba(248, 92, 92, 0.93)' : 'rgba(86, 91, 98, 0.86)'};
-`;
-
-const ResultCard = () => {
+const ResultCard = ({ teamName }) => {
   const [teamData, setTeamData] = useState(null);
+  console.log(teamData);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getAllTeamData('Red Bull Racing');
+        const data = await getAllTeamData(teamName);
         setTeamData(data);
       } catch (error) {
         console.error(
@@ -130,11 +106,11 @@ const ResultCard = () => {
     infoList: [
       {
         icon: '🇳🇱',
-        label: '네덜란드',
+        label: teamData.drivers[0].nationality,
       },
       {
         icon: '📅',
-        label: '2015년 데뷔',
+        label: `${teamData.drivers[0].debutYear}년 데뷔`,
       },
       {
         icon: '🎂',
@@ -148,11 +124,11 @@ const ResultCard = () => {
     infoList: [
       {
         icon: '🇯🇵',
-        label: '일본',
+        label: teamData.drivers[1].nationality,
       },
       {
         icon: '📅',
-        label: '2021년 데뷔',
+        label: `${teamData.drivers[1].debutYear}년 데뷔`,
       },
       {
         icon: '🎂',
@@ -215,10 +191,6 @@ const ResultCard = () => {
           style={{ gridArea: 'stats2' }}
         />
       </Content>
-      <Footer>
-        <Button like>마음에 들어요</Button>
-        <Button>공유하기</Button>
-      </Footer>
     </ResultCardWrapper>
   );
 };

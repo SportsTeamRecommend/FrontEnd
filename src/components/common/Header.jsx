@@ -9,12 +9,16 @@ import {
   StyledNavLink,
 } from './Header.styles.js';
 
+import siteLogo from './../../assets/sitelogo.png';
+
 const Header = () => {
   return (
     <HeaderContainer>
       {/* 상단 로고 영역 */}
       <HeaderTop>
-        <LogoBox>로고</LogoBox>
+        <LogoBox>
+          <img src={siteLogo} alt="" />
+        </LogoBox>
         <SiteTitle>MY TEAM FINDER</SiteTitle>
       </HeaderTop>
 
