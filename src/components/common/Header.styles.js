@@ -15,14 +15,18 @@ export const HeaderTop = styled.div`
 `;
 
 export const LogoBox = styled.div`
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   background-color: #3a4152;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 0.75rem;
+
+  img {
+    width: 80px;
+  }
 `;
 
 export const LogoImg = styled.img`

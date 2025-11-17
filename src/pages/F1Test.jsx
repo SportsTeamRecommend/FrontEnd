@@ -15,16 +15,23 @@ import { useState } from 'react';
 
 const F1Test = () => {
   const nav = useNavigate();
-  const goResultPage = () => {
-    nav('/result');
-  };
-
   const [data, setData] = useState([]);
+
+  const goResultPage = () => {
+    if (data && data.length > 0) {
+      const winningTeamName = data[0].name;
+
+      // 세션 스토리지
+      localStorage.setItem('testResult', JSON.stringify(winningTeamName));
+
+      nav(`/result`);
+    }
+  };
 
   const handleSliderUpdate = async (payload) => {
     try {
       const res = await api.post('/api/f1/recommend', payload);
-      console.log('POST 성공:', res.data);
+      // console.log('POST 성공:', res.data);
       setData(res.data);
     } catch (err) {
       console.error('POST 실패:', err);

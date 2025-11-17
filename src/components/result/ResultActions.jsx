@@ -7,12 +7,34 @@ const CardDescriptionWrapper = styled.div`
   width: 97%;
 `;
 
+const LikeShareButton = styled.button`
+  width: 100px;
+  height: 50px;
+  flex-shrink: 0;
+
+  color: white;
+  border-radius: 10px;
+  /* border: 2px solid #fff; */
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+
+  text-align: center;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+
+  background: ${(props) =>
+    props.like ? 'rgba(248, 92, 92, 0.93)' : 'rgba(86, 91, 98, 0.86)'};
+`;
+
 const DescriptionGroup = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   width: 100%;
+  margin-bottom: 70px;
 `;
 const BaseText = styled.div`
   color: #fff;
@@ -69,6 +91,10 @@ const KboButton = styled(Button)`
 const ResultActions = () => {
   return (
     <CardDescriptionWrapper>
+      <ButtonGroup>
+        <LikeShareButton like>❤️ 좋아요</LikeShareButton>
+        <LikeShareButton>🔗 공유하기</LikeShareButton>
+      </ButtonGroup>
       <DescriptionGroup>
         <Title>용어 설명</Title>
         <Description>
