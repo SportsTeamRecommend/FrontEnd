@@ -46,6 +46,14 @@ const LiveResultCard = ({ type, data }) => {
     img: getTeamLogo(type, team.name),
     color: getTeamColor(type, team.name),
   }));
+
+  if (data.length === 0) {
+    return (
+      <Card>
+        <span>연고지를 선택해주세요.</span>
+      </Card>
+    );
+  }
   return (
     <Card>
       <Title>Top 3</Title>
