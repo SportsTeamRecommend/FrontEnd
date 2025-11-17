@@ -147,12 +147,12 @@ const GradeCard2 = ({ rank, img, teamName, recommendations, likes, color }) => {
       <ItemStats>
         <StatGroup>
           <Text>추천 횟수</Text>
-          <Recommendation>{recommendations}</Recommendation>
+          <Recommendation>{Number(recommendations).toFixed(0)}</Recommendation>
         </StatGroup>
 
         <StatGroup>
           <Text>좋아요</Text>
-          <Like>{likes}%</Like>
+          <Like>{Number(likes).toFixed(1)}%</Like>
         </StatGroup>
 
         <ProgressBar>
