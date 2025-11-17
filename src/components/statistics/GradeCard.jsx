@@ -135,12 +135,12 @@ const GradeCard = ({ rank, img, teamName, recommendations, likes, color }) => {
         <RecommendAndHeartGrid>
           <BoxInCard>
             <Text>추천 횟수</Text>
-            <Recommedation>{recommendations}</Recommedation>
+            <Recommedation>{Number(recommendations).toFixed(0)}</Recommedation>
           </BoxInCard>
 
           <BoxInCard>
             <Text>좋아요</Text>
-            <Like>{likes}%</Like>
+            <Like>{Number(likes).toFixed(1)}%</Like>
           </BoxInCard>
         </RecommendAndHeartGrid>
       </TeamInfo>
