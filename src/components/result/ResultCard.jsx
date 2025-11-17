@@ -110,7 +110,10 @@ const ResultCard = () => {
         const data = await getAllTeamData('Red Bull Racing');
         setTeamData(data);
       } catch (error) {
-        console.error('Error fetching team data in ResultCard:', error);
+        console.error(
+          '팀 정보 데이터를 가져오는 데 오류가 발생했습니다.',
+          error
+        );
       }
     };
 
@@ -118,7 +121,7 @@ const ResultCard = () => {
   }, []);
 
   if (!teamData) return;
-  console.log(teamData);
+  // console.log(teamData);
 
   const driverData1 = {
     name: teamData.drivers[0].name,
@@ -170,10 +173,10 @@ const ResultCard = () => {
   ];
 
   const seasonStats = [
+    { label: '순위', value: teamData.seasonPosition },
+    { label: '포인트', value: teamData.seasonPoint },
     { label: '우승', value: teamData.seasonWins },
     { label: '포디움', value: teamData.seasonPodiums },
-    { label: '순위', value: 3 }, // ?
-    { label: '폴포지션', value: 7 }, // ?
   ];
 
   return (
