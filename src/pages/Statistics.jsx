@@ -10,6 +10,8 @@ import { f1TopTeams, kboTopTeams } from '../utils/teamStatisticsData.js';
 
 import api from './../utils/axios.js';
 
+import { getAllTeamData } from '../utils/allTeamData.js';
+
 export const fetchF1Statistics = async (signal) => {
   try {
     const res = await api.get('/api/f1/statistics', { signal });
@@ -44,7 +46,7 @@ const Statistics = () => {
 
     const loadData = async () => {
       try {
-        // NOTE: 현재 F1 통계만 구현되어 있어 F1 데이터만 가져옵니다.
+        // 현재 F1 통계만 구현되어 있어 F1 데이터만
         const apiData = type === 'f1' ? await fetchF1Statistics() : [];
 
         console.log(`${type.toUpperCase()} API 실제 응답 데이터:`, apiData);
@@ -61,7 +63,6 @@ const Statistics = () => {
             recommendations: apiTeam.recommended,
             likes: apiTeam.likedPercentage,
 
-            // 로컬 mock 데이터 사용 (이미지, 색상 등)
             rank: index + 1,
             icon: index < 3 ? icons[index] : `${index + 1}`,
             teamName: localTeam ? localTeam.teamName : apiTeam.team,
@@ -80,7 +81,7 @@ const Statistics = () => {
         }
       }
     };
-    loadData();
+    // loadData();
 
     return () => abortRef.current?.abort();
   }, [type]);
