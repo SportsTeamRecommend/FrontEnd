@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import {
   baseballSliderLabels,
   baseballSliderCheckobx,
-  region,
+  regionList,
 } from '../utils/testData';
 import {
   Container,
@@ -14,12 +14,34 @@ import {
   RankSection,
   SliderSection,
 } from './TestPage.styles';
+import { useState } from 'react';
+import api from '../utils/axios';
 
 const BaseballTest = () => {
   const nav = useNavigate();
   const goResultPage = () => {
     nav('/result');
   };
+
+  const [data, setData] = useState([]);
+
+  const handleSliderUpdate = async ({ payload, userRegion }) => {
+    // region 선택 안 했으면 API 호출 X
+    if (!userRegion) return;
+
+    try {
+      const res = await api.post(
+        `/api/kbo/recommend?userRegion=${userRegion}`,
+        payload
+      );
+      console.log('POST 성공:', res.data);
+      setData(res.data);
+    } catch (err) {
+      console.error('POST 실패:', err);
+    }
+  };
+
+  const resultData = data.slice(0, 3);
 
   return (
     <Container>
@@ -28,13 +50,14 @@ const BaseballTest = () => {
         <SliderSection>
           <WeightSlider
             labels={baseballSliderLabels}
-            region={region}
+            region={regionList}
             checkLabels={baseballSliderCheckobx}
             type={'kbo'}
+            onUpdate={handleSliderUpdate}
           />
         </SliderSection>
         <RankSection>
-          <LiveResultCard type={'kbo'} />
+          <LiveResultCard type={'kbo'} data={resultData} />
           <Button
             text="결과 보러 가기"
             type="resultPage"

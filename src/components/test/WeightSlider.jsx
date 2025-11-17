@@ -19,7 +19,7 @@ const WeightSlider = ({ labels, checkLabels, region, type, onUpdate }) => {
 
   const [values, setValues] = useState(Array(labels.length).fill(0));
   const [selectedOptions, setSelectedOptions] = useState(
-    checkLabels.map((group) => (group ? 0 : null))
+    checkLabels.map((group) => (group ? 1 : null))
   );
   const [selectedRegion, setSelectedRegion] = useState('');
 
@@ -50,15 +50,20 @@ const WeightSlider = ({ labels, checkLabels, region, type, onUpdate }) => {
       data[preferenceKey] = mapWeight(selectedOptions[idx]); // 라디오
       data[importanceKey] = values[idx]; // 슬라이더
     });
-
+    // ⭐ KBO일 때는 region 추가
+    if (type === 'kbo') {
+      data.userRegion = selectedRegion;
+    }
     return data;
   };
 
-  console.log('data', buildPayload());
-
+  // ⭐ 선택한 실제 지역 (예: INCHEON)만 따로 보내줌
   useEffect(() => {
-    onUpdate?.(buildPayload());
-  }, [values, selectedOptions]);
+    onUpdate?.({
+      payload: buildPayload(), // 바디용
+      userRegion: selectedRegion, // 쿼리 파라미터용
+    });
+  }, [values, selectedOptions, selectedRegion]);
 
   return (
     <Container>
@@ -79,8 +84,8 @@ const WeightSlider = ({ labels, checkLabels, region, type, onUpdate }) => {
                 >
                   <option value="">선택하세요</option>
                   {region.map((r, rIdx) => (
-                    <option key={rIdx} value={r}>
-                      {r}
+                    <option key={rIdx} value={r.value}>
+                      {r.label}
                     </option>
                   ))}
                 </Select>

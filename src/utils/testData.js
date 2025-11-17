@@ -52,13 +52,13 @@ export const f1Fields = [
 export const kboFields = [
   {
     label: '팀 성적',
-    preferenceKey: 'teamRecordPreference',
-    importanceKey: 'teamRecordImportance',
+    preferenceKey: 'recordPreference',
+    importanceKey: 'recordImportance',
   },
   {
     label: '근본',
-    preferenceKey: 'heritagePreference',
-    importanceKey: 'heritageImportance',
+    preferenceKey: 'legacyPreference',
+    importanceKey: 'legacyImportance',
   },
   {
     label: '팬덤 규모',
@@ -67,13 +67,13 @@ export const kboFields = [
   },
   {
     label: '성장 가능성',
-    preferenceKey: 'driverRecordPreference', // 중요: 선수 성장 가능성 → 선수 기록으로 매핑
-    importanceKey: 'driverRecordImportance',
+    preferenceKey: 'growthPreference',
+    importanceKey: 'growthImportance',
   },
   {
     label: '연고지',
-    preferenceKey: 'underdogSpiritPreference', // 원래 언더독이었지만 라벨명만 변경이라고 가정
-    importanceKey: 'underdogSpiritImportance',
+    preferenceKey: 'regionPreference',
+    importanceKey: 'regionImportance',
   },
   {
     label: '프랜차이즈 스타',
@@ -104,22 +104,22 @@ export const baseballSliderCheckobx = [
   ['상관없음', '많음'],
 ];
 
-export const region = [
-  '서울특별시',
-  '부산광역시',
-  '대구광역시',
-  '인천광역시',
-  '광주광역시',
-  '대전광역시',
-  '울산광역시',
-  '세종특별자치시',
-  '경기도',
-  '강원도',
-  '충청북도',
-  '충청남도',
-  '전라북도',
-  '전라남도',
-  '경상북도',
-  '경상남도',
-  '제주도',
+export const regionList = [
+  { label: '서울특별시', value: 'SEOUL' },
+  { label: '부산광역시', value: 'BUSAN' },
+  { label: '대구광역시', value: 'DAEGU' },
+  { label: '인천광역시', value: 'INCHEON' },
+  { label: '광주광역시', value: 'GWANGJU' },
+  { label: '대전광역시', value: 'DAEJEON' },
+  { label: '울산광역시', value: 'ULSAN' },
+  { label: '세종특별자치시', value: 'SEJONG' },
+  { label: '경기도', value: 'GYEONGGI' },
+  { label: '강원도', value: 'GANGWON' },
+  { label: '충청북도', value: 'CHUNGBUK' },
+  { label: '충청남도', value: 'CHUNGNAM' },
+  { label: '전라북도', value: 'JEONBUK' },
+  { label: '전라남도', value: 'JEONNAM' },
+  { label: '경상북도', value: 'GYEONGBUK' },
+  { label: '경상남도', value: 'GYEONGNAM' },
+  { label: '제주도', value: 'JEJU' },
 ];

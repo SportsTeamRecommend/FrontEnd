@@ -1,14 +1,14 @@
 export const kboTeam = {
-  'KIA Tigers': '#EA0029',
-  'LG Twins': '#C30452',
-  'Doosan Bears': '#1A1748',
-  'Lotte Giants': '#041E42',
-  'Samsung Lions': '#074CA1',
-  'Hanwha Eagles': '#FC4E00',
-  'SSG Landers': '#CE0E2D',
-  'NC Dinos': '#315288',
-  'KT Wiz': '#000000',
-  'Kiwoom Heroes': '#570514',
+  'KIA 타이거즈': '#EA0029',
+  'LG 트윈스': '#C30452',
+  '두산 베어스': '#1A1748',
+  '롯데 자이언츠': '#041E42',
+  '삼성 라이온즈': '#074CA1',
+  '한화 이글스': '#FC4E00',
+  'SSG 랜더스': '#CE0E2D',
+  'NC 다이노스': '#315288',
+  'KT 위즈': '#000000',
+  '키움 히어로즈': '#570514',
 };
 
 export const f1Team = {
@@ -34,6 +34,11 @@ export const getTeamColor = (league, team) => {
     return f1Team[foundKey];
   }
   if (league === 'kbo') {
-    return kboTeam[team];
+    const foundKey = Object.keys(kboTeam).find(
+      (key) =>
+        key.toLowerCase().includes(team.toLowerCase()) ||
+        team.toLowerCase().includes(key.toLowerCase())
+    );
+    return kboTeam[foundKey];
   }
 };
