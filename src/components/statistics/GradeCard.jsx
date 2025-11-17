@@ -4,24 +4,25 @@ const PriceCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  min-height: 22vh;
+  justify-content: center;
+  min-height: 220px;
+  max-width: 180px;
   padding: 12px;
   border-radius: 10px;
   background: ${({ $color }) => $color || 'rgba(55, 65, 81, 0.86)'};
   transition: all 0.2s ease;
+  gap: 10px;
 
   ${({ $rank }) =>
     $rank === 1 &&
     css`
-      min-height: 28vh;
+      min-height: 280px;
     `}
-
   ${({ $rank }) =>
     $rank === 2 &&
     css`
-      min-height: 25vh;
-    `}
+      min-height: 250px;
+    `};
 `;
 
 const IconBox = styled.div`
@@ -88,7 +89,7 @@ const TeamName = styled.div`
   font-family: Inter;
   font-size: 20px;
   font-weight: 700;
-  white-space: nowrap;
+  text-align: center;
   overflow: hidden;
 `;
 
@@ -110,6 +111,7 @@ const BoxInCard = styled.div`
 const Text = styled.div`
   color: #fff;
   font-size: 14px;
+  white-space: nowrap;
 `;
 
 const Recommedation = styled.div`
