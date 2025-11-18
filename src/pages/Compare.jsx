@@ -3,6 +3,7 @@ import Button from '../components/common/Button';
 import { useState } from 'react';
 import { f1Teams, kboTeams } from '../utils/teamData';
 import styled from 'styled-components';
+import api from '../utils/axios';
 
 const Container = styled.div`
   color: white;
@@ -52,27 +53,37 @@ const Compare = () => {
     setTeam2(null);
   };
   const changeTypeKBO = () => {
-    setType('baseball');
+    setType('kbo');
     setTeam1(null);
     setTeam2(null);
   };
 
-  const onSelectTeam1 = (e) => {
-    const selectedName = e.target.value;
-    const currentTeams = type === 'f1' ? f1Teams : kboTeams;
-    const selectedTeamData = currentTeams.find(
-      (team) => team.name === selectedName
-    );
-    setTeam1(selectedTeamData);
+  const fetchTeamData = async (teamName) => {
+    try {
+      const res = await api.get(`/api/kbo/compare`, {
+        params: { teamName },
+      });
+      return res.data;
+    } catch (err) {
+      console.error('팀 비교 API 실패:', err);
+      return null;
+    }
   };
 
-  const onSelectTeam2 = (e) => {
+  const onSelectTeam1 = async (e) => {
     const selectedName = e.target.value;
-    const currentTeams = type === 'f1' ? f1Teams : kboTeams;
-    const selectedTeamData = currentTeams.find(
-      (team) => team.name === selectedName
-    );
-    setTeam2(selectedTeamData);
+    if (!selectedName) return;
+
+    const data = await fetchTeamData(selectedName);
+    if (data) setTeam1(data);
+  };
+
+  const onSelectTeam2 = async (e) => {
+    const selectedName = e.target.value;
+    if (!selectedName) return;
+
+    const data = await fetchTeamData(selectedName);
+    if (data) setTeam2(data);
   };
 
   return (
@@ -100,7 +111,7 @@ const Compare = () => {
                 </option>
               ))
             : kboTeams.map((team) => (
-                <option key={team.id} value={team.name}>
+                <option key={team.id} value={team.id}>
                   {team.name}
                 </option>
               ))}
@@ -115,7 +126,7 @@ const Compare = () => {
                 </option>
               ))
             : kboTeams.map((team) => (
-                <option key={team.id} value={team.name}>
+                <option key={team.id} value={team.id}>
                   {team.name}
                 </option>
               ))}
@@ -123,7 +134,7 @@ const Compare = () => {
       </TeamSelect>
       <div>
         {team1 && team2 ? (
-          <Chart team1={team1} team2={team2} />
+          <Chart team1={team1} team2={team2} type={type} />
         ) : (
           <p>비교할 팀을 선택해 주세요.</p>
         )}

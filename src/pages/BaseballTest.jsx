@@ -34,7 +34,7 @@ const BaseballTest = () => {
         `/api/kbo/recommend?userRegion=${userRegion}`,
         payload
       );
-      console.log('POST 성공:', res.data);
+      // console.log('POST 성공:', res.data);
       setData(res.data);
     } catch (err) {
       console.error('POST 실패:', err);
