@@ -4,10 +4,13 @@ import StatCard from './StatCard';
 import PlayerCard from './PlayerCard';
 
 import redbull from './../../assets/f1-logo/redbull.svg';
-import max from './../../assets/max.webp';
-import yuki from './../../assets/yuki.webp';
+
 import { getAllTeamData } from '../../utils/allTeamData';
 import { useEffect, useState } from 'react';
+import {
+  nationalityToEmoji,
+  nationalityToKorean,
+} from '../../utils/nationalityMap';
 
 const ResultCardWrapper = styled.div`
   display: flex;
@@ -78,7 +81,7 @@ const Content = styled.div`
 
 const ResultCard = ({ teamName }) => {
   const [teamData, setTeamData] = useState(null);
-  console.log(teamData);
+  // console.log(teamData);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -101,12 +104,12 @@ const ResultCard = ({ teamName }) => {
 
   const driverData1 = {
     name: teamData.drivers[0].name,
-    // imageUrl: teamData.drivers[0].imageUrl, // 이미지 경로 (api), 수정 전이므로 현재는 로컬 데이터 사용
-    imageUrl: max,
+    imageUrl: teamData.drivers[0].imageUrl,
+    // imageUrl: max,
     infoList: [
       {
-        icon: '🇳🇱',
-        label: teamData.drivers[0].nationality,
+        icon: nationalityToEmoji[teamData.drivers[0].nationality] || '🏁',
+        label: nationalityToKorean[teamData.drivers[0].nationality] || 'Null',
       },
       {
         icon: '📅',
@@ -120,11 +123,12 @@ const ResultCard = ({ teamName }) => {
   };
   const driverData2 = {
     name: teamData.drivers[1].name,
-    imageUrl: yuki,
+    imageUrl: teamData.drivers[1].imageUrl,
+    // imageUrl: yuki,
     infoList: [
       {
-        icon: '🇯🇵',
-        label: teamData.drivers[1].nationality,
+        icon: nationalityToEmoji[teamData.drivers[1].nationality] || '🏁',
+        label: nationalityToKorean[teamData.drivers[1].nationality] || 'Null',
       },
       {
         icon: '📅',

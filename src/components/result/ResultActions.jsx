@@ -88,11 +88,13 @@ const KboButton = styled(Button)`
   background: rgba(25, 38, 71, 0.86);
 `;
 
-const ResultActions = () => {
+const ResultActions = ({ onClickLike }) => {
   return (
     <CardDescriptionWrapper>
       <ButtonGroup>
-        <LikeShareButton like>❤️ 좋아요</LikeShareButton>
+        <LikeShareButton like onClick={onClickLike}>
+          ❤️ 좋아요
+        </LikeShareButton>
         <LikeShareButton>🔗 공유하기</LikeShareButton>
       </ButtonGroup>
       <DescriptionGroup>

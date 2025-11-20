@@ -6,6 +6,7 @@ import TeamInfoSection from '../components/result/TeamInfoSection';
 import ResultActions from '../components/result/ResultActions';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import api from '../utils/axios';
 
 const ResultContainer = styled.div`
   color: white;
@@ -29,7 +30,7 @@ const Result = () => {
   const nav = useNavigate();
 
   useEffect(() => {
-    const savedResult = localStorage.getItem('testResult');
+    const savedResult = sessionStorage.getItem('testResult');
 
     if (savedResult) {
       setResultData(JSON.parse(savedResult));
@@ -47,12 +48,21 @@ const Result = () => {
     return <div>결과를 불러오는 중입니다...</div>;
   }
 
+  const handleAddLike = async () => {
+    try {
+      await api.post(`/api/f1/${topTeamName}/like`);
+      // console.log(`${topTeamName} 팀 좋아요 증가`);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <ResultContainer>
       <Header />
       <LineContainer>
         <ResultCard teamName={topTeamName} />
-        <ResultActions />
+        <ResultActions onClickLike={handleAddLike} />
       </LineContainer>
 
       <TeamInfoSection teamName={topTeamName} />
