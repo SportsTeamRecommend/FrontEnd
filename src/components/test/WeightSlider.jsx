@@ -57,12 +57,17 @@ const WeightSlider = ({ labels, checkLabels, region, type, onUpdate }) => {
     return data;
   };
 
-  // ⭐ 선택한 실제 지역 (예: INCHEON)만 따로 보내줌
   useEffect(() => {
-    onUpdate?.({
-      payload: buildPayload(), // 바디용
-      userRegion: selectedRegion, // 쿼리 파라미터용
-    });
+    if (type === 'kbo') {
+      onUpdate?.({
+        payload: buildPayload(), // 바디용
+        userRegion: selectedRegion, // 쿼리 파라미터용
+      });
+    } else {
+      onUpdate?.({
+        payload: buildPayload(), // 바디용
+      });
+    }
   }, [values, selectedOptions, selectedRegion]);
 
   return (
