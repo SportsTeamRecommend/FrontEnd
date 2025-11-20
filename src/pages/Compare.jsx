@@ -60,10 +60,17 @@ const Compare = () => {
 
   const fetchTeamData = async (teamName) => {
     try {
-      const res = await api.get(`/api/kbo/compare`, {
-        params: { teamName },
-      });
-      return res.data;
+      if (type === 'kbo') {
+        const res = await api.get(`/api/kbo/compare`, {
+          params: { teamName },
+        });
+        return res.data;
+      } else {
+        const res = await api.get(`/api/f1/compare`, {
+          params: { teamName },
+        });
+        return res.data;
+      }
     } catch (err) {
       console.error('팀 비교 API 실패:', err);
       return null;
@@ -89,7 +96,7 @@ const Compare = () => {
   return (
     <Container>
       <Header>
-        <h2>팀 전력 비교</h2>
+        <h2>{type.toUpperCase()} 팀 전력 비교</h2>
         <p>두 팀의 전력을 한눈에 비교해 보세요.</p>
       </Header>
       <TeamButton>
@@ -106,7 +113,7 @@ const Compare = () => {
           <option value="">선택</option>
           {type === 'f1'
             ? f1Teams.map((team) => (
-                <option key={team.id} value={team.name}>
+                <option key={team.id} value={team.id}>
                   {team.name}
                 </option>
               ))
@@ -121,7 +128,7 @@ const Compare = () => {
           <option value="">선택</option>
           {type === 'f1'
             ? f1Teams.map((team) => (
-                <option key={team.id} value={team.name}>
+                <option key={team.id} value={team.id}>
                   {team.name}
                 </option>
               ))
