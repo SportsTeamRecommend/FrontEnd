@@ -20,6 +20,15 @@ const fetchF1Statistics = async () => {
     throw error;
   }
 };
+const fetchKboStatistics = async () => {
+  try {
+    const res = await api.get('/api/kbo/statistics');
+    return res.data; // [{ team, recommended, likedPercentage }]
+  } catch (error) {
+    console.error('F1 통계 데이터 조회 중 에러 발생', error);
+    throw error;
+  }
+};
 
 const Statistics = () => {
   const [type, setType] = useState('f1');
@@ -37,8 +46,10 @@ const Statistics = () => {
 
     const loadData = async () => {
       try {
-        // 우선 F1 통계만 구현되어 있어 F1 데이터만
-        const apiData = type === 'f1' ? await fetchF1Statistics() : [];
+        const apiData =
+          type === 'f1'
+            ? await fetchF1Statistics()
+            : await fetchKboStatistics();
         // console.log(apiData);
 
         const icons = ['🥇', '🥈', '🥉'];
@@ -56,7 +67,9 @@ const Statistics = () => {
             // 로컬 데이터 사용
             rank: index + 1,
             icon: index < 3 ? icons[index] : `${index + 1}`,
-            teamName: localTeam ? localTeam.teamName : apiTeam.team,
+            teamName: localTeam
+              ? localTeam.teamName.split(' (')[0]
+              : apiTeam.team,
             img: localTeam ? localTeam.img : null, // 일치하는 팀이 없으면 null
             color: localTeam ? localTeam.color : '#808080', // 기본 색상
           };

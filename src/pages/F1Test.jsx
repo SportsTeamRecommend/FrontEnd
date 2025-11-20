@@ -22,7 +22,7 @@ const F1Test = () => {
       const winningTeamName = data[0].name;
 
       // 세션 스토리지
-      localStorage.setItem('testResult', JSON.stringify(winningTeamName));
+      sessionStorage.setItem('testResult', JSON.stringify(winningTeamName));
 
       nav(`/result`);
     }
