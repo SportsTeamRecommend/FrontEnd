@@ -1,6 +1,14 @@
 export const f1Teams = [
-  { id: 'redbull', name: 'Oracle RedBull Racing', stats: [2, 7, 8, 7, 4, 9] },
-  { id: 'ferrari', name: 'Ferrari', stats: [6, 1, 3, 7, 5, 1] },
+  { id: 'Red Bull Racing', name: 'Oracle Red Bull Racing' },
+  { id: 'Ferrari', name: 'Ferrari' },
+  { id: 'McLaren', name: 'McLaren' },
+  { id: 'Mercedes', name: 'Mercedes-AMG Petronas' },
+  { id: 'Williams', name: 'Williams' },
+  { id: 'Racing Bulls', name: 'Racing Bulls' },
+  { id: 'Aston Martin', name: 'Aston Martin Aramco' },
+  { id: 'Haas', name: 'Haas F1 Team' },
+  { id: 'Kick Sauber', name: 'Kick Sauber' },
+  { id: 'Alpine', name: 'Alpine' },
 ];
 
 export const kboTeams = [
@@ -20,7 +28,12 @@ const kboNameMap = Object.fromEntries(
   kboTeams.map((team) => [team.id.toLowerCase(), team.name])
 );
 
-export const getFullKboName = (shortName) => {
+const f1NameMap = Object.fromEntries(
+  f1Teams.map((team) => [team.id.toLowerCase(), team.name])
+);
+
+export const getFullName = (shortName, type) => {
   if (!shortName) return null;
-  return kboNameMap[shortName.toLowerCase()] || shortName;
+  if (type === 'kbo') return kboNameMap[shortName.toLowerCase()];
+  else return f1NameMap(shortName.toLowerCase());
 };

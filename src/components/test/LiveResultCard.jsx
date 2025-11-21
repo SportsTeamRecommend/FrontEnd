@@ -47,7 +47,7 @@ const LiveResultCard = ({ type, data }) => {
     color: getTeamColor(type, team.name),
   }));
 
-  if (data.length === 0) {
+  if (type === 'kbo' && data.length === 0) {
     return (
       <Card>
         <span>연고지를 선택해주세요.</span>

@@ -8,7 +8,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import { getFullKboName } from '../../utils/teamData';
+import { getFullName } from '../../utils/teamData';
 
 // 차트에 필요한 구성 요소를 등록합니다.
 ChartJS.register(
@@ -32,7 +32,14 @@ const Chart = ({ team1, team2, type }) => {
           team1.growth,
           team1.franchiseStar,
         ]
-      : team1.stats;
+      : [
+          team1.teamRecord,
+          team1.driverRecord,
+          team1.legacy,
+          team1.franchiseStar,
+          team1.underdog,
+          team1.fandom,
+        ];
 
   const team2Stats =
     type === 'kbo'
@@ -43,7 +50,14 @@ const Chart = ({ team1, team2, type }) => {
           team2.growth,
           team2.franchiseStar,
         ]
-      : team2.stats;
+      : [
+          team1.teamRecord,
+          team1.driverRecord,
+          team1.legacy,
+          team1.franchiseStar,
+          team1.underdog,
+          team1.fandom,
+        ];
 
   const options = {
     responsive: true,
@@ -83,14 +97,14 @@ const Chart = ({ team1, team2, type }) => {
         : ['팀 성적', '근본', '팬덤 규모', '성장 가능성', '프랜차이즈 스타'],
     datasets: [
       {
-        label: getFullKboName(team1.teamName) ?? team1.name,
+        label: getFullName(team1.teamName, type),
         data: team1Stats,
         backgroundColor: 'rgba(255, 99, 132, 0.7)',
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1,
       },
       {
-        label: getFullKboName(team2.teamName) ?? team2.name,
+        label: getFullName(team2.teamName, type),
         data: team2Stats,
         backgroundColor: 'rgba(54, 162, 235, 0.7)',
         borderColor: 'rgba(54, 162, 235, 1)',
