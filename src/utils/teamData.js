@@ -6,7 +6,7 @@ export const f1Teams = [
   { id: 'Williams', name: 'Williams' },
   { id: 'Racing Bulls', name: 'Racing Bulls' },
   { id: 'Aston Martin', name: 'Aston Martin Aramco' },
-  { id: 'Haas', name: 'Haas F1 Team' },
+  { id: 'Haas F1 Team', name: 'Haas F1 Team' },
   { id: 'Kick Sauber', name: 'Kick Sauber' },
   { id: 'Alpine', name: 'Alpine' },
 ];
@@ -35,5 +35,5 @@ const f1NameMap = Object.fromEntries(
 export const getFullName = (shortName, type) => {
   if (!shortName) return null;
   if (type === 'kbo') return kboNameMap[shortName.toLowerCase()];
-  else return f1NameMap(shortName.toLowerCase());
+  else return f1NameMap[shortName.toLowerCase()];
 };
