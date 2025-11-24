@@ -51,12 +51,12 @@ const Chart = ({ team1, team2, type }) => {
           team2.franchiseStar,
         ]
       : [
-          team1.teamRecord,
-          team1.driverRecord,
-          team1.legacy,
-          team1.franchiseStar,
-          team1.underdog,
-          team1.fandom,
+          team2.teamRecord,
+          team2.driverRecord,
+          team2.legacy,
+          team2.franchiseStar,
+          team2.underdog,
+          team2.fandom,
         ];
 
   const options = {
