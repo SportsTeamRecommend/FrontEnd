@@ -9,7 +9,7 @@ import {
   StyledNavLink,
 } from './Header.styles.js';
 
-import siteLogo from './../../assets/sitelogo.png';
+import siteLogo from '../../assets/sitelogo.png';
 
 const Header = () => {
   return (
