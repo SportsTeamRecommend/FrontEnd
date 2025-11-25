@@ -34,6 +34,7 @@ export const MainTitle = styled.h1`
   line-height: 1.2;
   @media (max-width: 767px) {
     font-size: 1.5rem;
+    word-break: keep-all;
   }
 `;
 

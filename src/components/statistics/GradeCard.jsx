@@ -1,5 +1,9 @@
 import styled, { css } from 'styled-components';
 
+const breakpoints = {
+  mobile: '767px',
+};
+
 const PriceCard = styled.div`
   display: flex;
   flex-direction: column;
@@ -22,14 +26,35 @@ const PriceCard = styled.div`
     $rank === 2 &&
     css`
       min-height: 250px;
-    `};
+    `}
+  
+  /* 📱 모바일에서는 카드 자체 확장 */
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 85%;
+    max-width: 85%;
+    padding: 12px;
+    ${({ $rank }) =>
+      $rank === 1 &&
+      css`
+        height: 280px;
+      `}
+    ${({ $rank }) =>
+      $rank === 2 &&
+      css`
+        height: 250px;
+      `}
+      ${({ $rank }) =>
+      $rank === 3 &&
+      css`
+        height: 220px;
+      `}
+  }
 `;
 
 const IconBox = styled.div`
   padding: 10px;
   border-radius: 10px;
   display: flex;
-  text-align: center;
   justify-content: center;
   align-items: center;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
@@ -40,20 +65,24 @@ const IconBox = styled.div`
       width: 100px;
       height: 100px;
     `}
-
   ${({ $rank }) =>
     $rank === 2 &&
     css`
       width: 80px;
       height: 80px;
     `}
-
   ${({ $rank }) =>
     $rank === 3 &&
     css`
       width: 60px;
       height: 60px;
     `}
+  
+  /* 모바일에서는 사이즈 축소 */
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 55px;
+    height: 55px;
+  }
 `;
 
 const TeamImage = styled.img`
@@ -64,54 +93,76 @@ const TeamImage = styled.img`
     css`
       width: 90px;
     `}
-
   ${({ $rank }) =>
     $rank === 2 &&
     css`
       width: 70px;
     `}
-
   ${({ $rank }) =>
     $rank === 3 &&
     css`
       width: 50px;
     `}
+  
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 60px;
+  }
 `;
 
 const TeamInfo = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%; /* 모바일에서 grid가 넓게 쓰도록 */
 `;
 
 const TeamName = styled.div`
   color: #fff;
-  font-family: Inter;
   font-size: 20px;
   font-weight: 700;
   text-align: center;
   overflow: hidden;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 12px;
+  }
 `;
 
 const RecommendAndHeartGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  width: 100%;
   border-top: 1px solid rgb(250, 250, 250);
+
+  /* 📱 모바일에서는 세로 정렬 */
+  @media (max-width: ${breakpoints.mobile}) {
+    grid-template-columns: 1fr;
+    row-gap: 10px;
+    padding-top: 10px;
+  }
 `;
 
 const BoxInCard = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-around;
   gap: 4px;
   margin: 20px;
-  flex-direction: column;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    margin: 10px;
+    font-size: 12px;
+  }
 `;
 
 const Text = styled.div`
   color: #fff;
   font-size: 14px;
   white-space: nowrap;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 13px;
+  }
 `;
 
 const Recommedation = styled.div`
