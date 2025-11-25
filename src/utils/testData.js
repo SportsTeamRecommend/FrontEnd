@@ -29,8 +29,8 @@ export const f1Fields = [
   },
   {
     label: '근본',
-    preferenceKey: 'heritagePreference',
-    importanceKey: 'heritageImportance',
+    preferenceKey: 'legacyPreference',
+    importanceKey: 'legacyImportance',
   },
   {
     label: '팬덤 규모',
@@ -39,8 +39,8 @@ export const f1Fields = [
   },
   {
     label: '언더독',
-    preferenceKey: 'underdogSpiritPreference',
-    importanceKey: 'underdogSpiritImportance',
+    preferenceKey: 'underdogPreference',
+    importanceKey: 'underdogImportance',
   },
   {
     label: '프랜차이즈',
