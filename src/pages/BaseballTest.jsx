@@ -32,8 +32,6 @@ const BaseballTest = () => {
     }
   };
 
-  const [data, setData] = useState([]);
-
   const handleSliderUpdate = async ({ payload, userRegion }) => {
     // region 선택 안 했으면 API 호출 X
     if (!userRegion) return;
@@ -51,7 +49,6 @@ const BaseballTest = () => {
   };
 
   const resultData = data.slice(0, 3);
-
 
   return (
     <Container>
