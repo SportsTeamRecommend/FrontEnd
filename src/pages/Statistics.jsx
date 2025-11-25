@@ -20,6 +20,18 @@ export const fetchF1Statistics = async (signal) => {
     throw error;
   }
 };
+<<<<<<< Updated upstream
+=======
+const fetchKboStatistics = async () => {
+  try {
+    const res = await api.get('/api/kbo/statistics');
+    return res.data; // [{ team, recommended, likedPercentage }]
+  } catch (error) {
+    console.error('Kbo 통계 데이터 조회 중 에러 발생', error);
+    throw error;
+  }
+};
+>>>>>>> Stashed changes
 
 const Statistics = () => {
   const [type, setType] = useState('f1');

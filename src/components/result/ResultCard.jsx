@@ -3,11 +3,22 @@ import styled from 'styled-components';
 import StatCard from './StatCard';
 import PlayerCard from './PlayerCard';
 
+<<<<<<< Updated upstream
 import { allTimeStats, seasonStats } from '../../utils/statData';
 
 import redbull from './../../assets/f1-logo/redbull.svg';
 import max from './../../assets/max.webp';
 import yuki from './../../assets/yuki.webp';
+=======
+import { getAllTeamData } from '../../utils/allTeamData';
+import { useEffect, useState } from 'react';
+import {
+  nationalityToEmoji,
+  nationalityToKorean,
+} from '../../utils/nationalityMap';
+import { f1LogoMap, kboLogoMap } from '../../utils/teamLogoMap';
+import { f1Team } from '../../utils/teamColor';
+>>>>>>> Stashed changes
 
 const ResultCardWrapper = styled.div`
   display: flex;
@@ -32,7 +43,7 @@ const Logo = styled.div`
   height: 70px;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  background-color: ${(props) => props.$teamColor || 'white'};
   border-radius: 12px;
   padding: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -40,6 +51,7 @@ const Logo = styled.div`
   img {
     width: 100%;
     height: auto;
+    object-fit: contain;
   }
 `;
 const Text = styled.div`
@@ -78,17 +90,24 @@ const Content = styled.div`
   }
 `;
 
+<<<<<<< Updated upstream
 const Footer = styled.div`
   display: flex;
   gap: 45px;
   margin-top: 14px;
 `;
+=======
+const ResultCard = ({ teamName, type }) => {
+  const [teamData, setTeamData] = useState(null);
+  // console.log(teamData);
+>>>>>>> Stashed changes
 
 const Button = styled.button`
   width: 243px;
   height: 31px;
   flex-shrink: 0;
 
+<<<<<<< Updated upstream
   color: white;
   border-radius: 10px;
   border: 2px solid #fff;
@@ -112,6 +131,72 @@ const driverData1 = {
     {
       icon: '🇳🇱',
       label: '네덜란드',
+=======
+    fetchData(); // 페이지 로드 시 팀 데이터 가져오기
+  }, [teamName]);
+
+  if (!teamData) return <div>팀 데이터를 불러오는 중입니다...</div>;
+
+  const logoMap = type === 'f1' ? f1LogoMap : kboLogoMap; // 결과 페이지 타입
+  const logoSrc = logoMap[teamName] || ''; // 로컬 로고
+  const teamColor = f1Team[teamName] || '#FFFFFF'; // 팀 색상
+
+  const isF1 = type === 'f1';
+
+  const driverData1 = isF1
+    ? {
+        name: teamData.drivers[0].name,
+        imageUrl: teamData.drivers[0].imageUrl,
+        infoList: [
+          {
+            icon: nationalityToEmoji[teamData.drivers[0].nationality] || '🏁',
+            label:
+              nationalityToKorean[teamData.drivers[0].nationality] || 'Null',
+          },
+          {
+            icon: '📅',
+            label: `${teamData.drivers[0].debutYear}년 데뷔`,
+          },
+          {
+            icon: '🎂',
+            label: teamData.drivers[0].dateOfBirth,
+          },
+        ],
+      }
+    : null;
+
+  const driverData2 =
+    isF1 && teamData.drivers.length > 1
+      ? {
+          name: teamData.drivers[1].name,
+          imageUrl: teamData.drivers[1].imageUrl,
+          infoList: [
+            {
+              icon: nationalityToEmoji[teamData.drivers[1].nationality] || '🏁',
+              label:
+                nationalityToKorean[teamData.drivers[1].nationality] || 'Null',
+            },
+            {
+              icon: '📅',
+              label: `${teamData.drivers[1].debutYear}년 데뷔`,
+            },
+            {
+              icon: '🎂',
+              label: teamData.drivers[1].dateOfBirth,
+            },
+          ],
+        }
+      : null;
+
+  const allTimeStats = [
+    { label: 'WCC', value: teamData.worldChampionship },
+    {
+      label: 'WDC',
+      value: isF1
+        ? teamData.drivers[0].driverChampionship +
+          teamData.drivers[1].driverChampionship
+        : '-',
+>>>>>>> Stashed changes
     },
     {
       icon: '📅',
@@ -146,8 +231,8 @@ const ResultCard = () => {
   return (
     <ResultCardWrapper>
       <Header>
-        <Logo>
-          <img src={redbull} alt="Red Bull Racing Logo" />
+        <Logo $teamColor={teamColor}>
+          <img src={logoSrc} alt={`${teamName} Logo`} />
         </Logo>
 
         <Text>
@@ -156,18 +241,22 @@ const ResultCard = () => {
         </Text>
       </Header>
       <Content>
-        <PlayerCard
-          name={driverData1.name}
-          imageUrl={driverData1.imageUrl}
-          infoList={driverData1.infoList}
-          style={{ gridArea: 'player1' }}
-        />
-        <PlayerCard
-          name={driverData2.name}
-          imageUrl={driverData2.imageUrl}
-          infoList={driverData2.infoList}
-          style={{ gridArea: 'player2' }}
-        />
+        {isF1 && driverData1 && (
+          <PlayerCard
+            name={driverData1.name}
+            imageUrl={driverData1.imageUrl}
+            infoList={driverData1.infoList}
+            style={{ gridArea: 'player1' }}
+          />
+        )}
+        {isF1 && driverData2 && (
+          <PlayerCard
+            name={driverData2.name}
+            imageUrl={driverData2.imageUrl}
+            infoList={driverData2.infoList}
+            style={{ gridArea: 'player2' }}
+          />
+        )}
         <StatCard
           title="역대 성적"
           stats={allTimeStats}

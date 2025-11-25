@@ -14,7 +14,18 @@ import {
 const F1Test = () => {
   const nav = useNavigate();
   const goResultPage = () => {
+<<<<<<< Updated upstream
     nav('/result');
+=======
+    if (data && data.length > 0) {
+      const resultData = { type: 'f1', teamName: data[0].name };
+
+      // 세션 스토리지
+      sessionStorage.setItem('testResult', JSON.stringify(resultData));
+
+      nav(`/result`);
+    }
+>>>>>>> Stashed changes
   };
 
   return (
