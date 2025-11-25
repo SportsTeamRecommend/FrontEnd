@@ -1,4 +1,4 @@
-import api from 'axios';
+import api from './axios';
 
 // 특정 팀의 정보를 모두 가져옴
 export const getAllTeamData = async (teamName) => {
