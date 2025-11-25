@@ -52,6 +52,14 @@ const FloatBox = styled.div`
 
   /* delayClass prop으로 딜레이 결정 */
   ${({ $delay }) => delayStyles[$delay] || ''}
+
+  @media (max-width: 767px) {
+    left: ${({ $xy }) =>
+      `max(20px, min(${$xy.x}px, calc(70vw - 80px)))`} !important;
+    transform: translateX(0); /* 중심정렬 제거 */
+    max-width: 85%;
+    white-space: normal;
+  }
 `;
 
 const HoverTeamName = ({ name, color, xy, delayClass }) => {
