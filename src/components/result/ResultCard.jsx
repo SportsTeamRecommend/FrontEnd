@@ -11,74 +11,6 @@ import {
   nationalityToEmoji,
   nationalityToKorean,
 } from '../../utils/nationalityMap';
-
-const ResultCardWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 12px 58px;
-
-  border-radius: 10px;
-  background: rgba(55, 65, 81, 0.4);
-`;
-const Header = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  gap: 20px;
-  margin-bottom: 14px;
-`;
-const Logo = styled.div`
-  display: flex;
-  width: 70px;
-  height: 70px;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  border-radius: 12px;
-  padding: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
-  img {
-    width: 100%;
-    height: auto;
-  }
-`;
-const Text = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  justify-content: center;
-`;
-const TeamName = styled.span`
-  font-size: 32px;
-  font-weight: bold;
-  color: white;
-`;
-const TeamDescription = styled.span`
-  font-size: 18px;
-
-  color: #e0e0e0;
-`;
-const Content = styled.div`
-  display: grid;
-  gap: 24px;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas:
-    'player1 stats1'
-    'player2 stats2';
-  width: 100%;
-
-  @media (max-width: 880px) {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      'player1'
-      'player2'
-      'stats1'
-      'stats2';
-  }
-`;
-
 const ResultCard = ({ teamName }) => {
   const [teamData, setTeamData] = useState(null);
   // console.log(teamData);
@@ -162,8 +94,8 @@ const ResultCard = ({ teamName }) => {
   return (
     <ResultCardWrapper>
       <Header>
-        <Logo>
-          <img src={redbull} alt="Red Bull Racing Logo" />
+        <Logo $teamColor={teamColor}>
+          <img src={logoSrc} alt={`${teamName} Logo`} />
         </Logo>
 
         <Text>
@@ -172,18 +104,22 @@ const ResultCard = ({ teamName }) => {
         </Text>
       </Header>
       <Content>
-        <PlayerCard
-          name={driverData1.name}
-          imageUrl={driverData1.imageUrl}
-          infoList={driverData1.infoList}
-          style={{ gridArea: 'player1' }}
-        />
-        <PlayerCard
-          name={driverData2.name}
-          imageUrl={driverData2.imageUrl}
-          infoList={driverData2.infoList}
-          style={{ gridArea: 'player2' }}
-        />
+        {isF1 && driverData1 && (
+          <PlayerCard
+            name={driverData1.name}
+            imageUrl={driverData1.imageUrl}
+            infoList={driverData1.infoList}
+            style={{ gridArea: 'player1' }}
+          />
+        )}
+        {isF1 && driverData2 && (
+          <PlayerCard
+            name={driverData2.name}
+            imageUrl={driverData2.imageUrl}
+            infoList={driverData2.infoList}
+            style={{ gridArea: 'player2' }}
+          />
+        )}
         <StatCard
           title="역대 성적"
           stats={allTimeStats}

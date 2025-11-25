@@ -19,8 +19,17 @@ import api from '../utils/axios';
 
 const BaseballTest = () => {
   const nav = useNavigate();
+  const [data, setData] = useState([]);
+
   const goResultPage = () => {
-    nav('/result');
+    if (data && data.length > 0) {
+      const resultData = { type: 'kbo', teamName: data[0].name };
+
+      // 세션 스토리지
+      sessionStorage.setItem('testResult', JSON.stringify(resultData));
+
+      nav(`/result`);
+    }
   };
 
   const [data, setData] = useState([]);
@@ -42,6 +51,7 @@ const BaseballTest = () => {
   };
 
   const resultData = data.slice(0, 3);
+
 
   return (
     <Container>

@@ -19,10 +19,10 @@ const F1Test = () => {
 
   const goResultPage = () => {
     if (data && data.length > 0) {
-      const winningTeamName = data[0].name;
+      const resultData = { type: 'f1', teamName: data[0].name };
 
       // 세션 스토리지
-      sessionStorage.setItem('testResult', JSON.stringify(winningTeamName));
+      sessionStorage.setItem('testResult', JSON.stringify(resultData));
 
       nav(`/result`);
     }

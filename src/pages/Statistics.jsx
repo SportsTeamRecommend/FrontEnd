@@ -25,10 +25,11 @@ const fetchKboStatistics = async () => {
     const res = await api.get('/api/kbo/statistics');
     return res.data; // [{ team, recommended, likedPercentage }]
   } catch (error) {
-    console.error('F1 통계 데이터 조회 중 에러 발생', error);
+    console.error('Kbo 통계 데이터 조회 중 에러 발생', error);
     throw error;
   }
 };
+
 
 const Statistics = () => {
   const [type, setType] = useState('f1');
