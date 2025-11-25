@@ -11,7 +11,8 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 25px;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
 `;
 
 const Header = styled.div`
@@ -30,6 +31,12 @@ const TeamSelect = styled.div`
   align-items: center;
   gap: 15px;
   margin-top: 15px;
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
 `;
 
 const TeamOption = styled.select`
@@ -40,6 +47,11 @@ const TeamOption = styled.select`
   border-radius: 5px;
   width: 170px;
   margin-right: 30px;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    margin-right: 0;
+  }
 `;
 
 const Compare = () => {
