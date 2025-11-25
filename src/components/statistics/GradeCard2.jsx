@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+const breakpoints = {
+  mobile: '767px',
+};
+
 const PriceCard = styled.div`
   display: flex;
   align-items: center;
@@ -10,57 +14,98 @@ const PriceCard = styled.div`
   margin-bottom: 24px;
   min-width: 500px;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+
+  /* 📱 모바일에서는 세로 카드로 변경 */
+  @media (max-width: ${breakpoints.mobile}) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 90%;
+    min-width: 90%;
+    padding: 16px;
+  }
 `;
 
 const ItemInfo = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 16px;
   margin-right: 20px;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    margin-right: 0;
+    width: 100%;
+    justify-content: flex-start;
+  }
 `;
 
 const TextGroup = styled.div`
-  display: flex;
   min-width: 40px;
+  display: flex;
   justify-content: center;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    min-width: 30px;
+  }
 `;
 
 const GradeText = styled.div`
   color: #fffff0;
-  font-family: Inter, sans-serif;
   font-size: 26px;
   font-weight: 700;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 22px;
+  }
 `;
 
 const IconBox = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 70px;
   height: 70px;
   border-radius: 10px;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 60px;
+    height: 60px;
+  }
 `;
 
 const TeamImage = styled.img`
   width: 60px;
   border-radius: 6px;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 50px;
+  }
 `;
 
 const TeamName = styled.div`
   color: #fff;
-  font-family: Inter, sans-serif;
   font-size: 20px;
   font-weight: 700;
   white-space: nowrap;
   overflow: hidden;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 18px;
+  }
 `;
 
 const ItemStats = styled.div`
   display: flex;
   align-items: center;
   gap: 16px;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 12px;
+  }
 `;
 
 const StatGroup = styled.div`
@@ -68,12 +113,15 @@ const StatGroup = styled.div`
   flex-direction: column;
   gap: 4px;
   white-space: nowrap;
-  overflow: hidden;
 `;
 
 const Text = styled.div`
   color: #fff;
   font-size: 14px;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 13px;
+  }
 `;
 
 const Recommendation = styled.div`
@@ -90,6 +138,10 @@ const ProgressBar = styled.div`
   background-color: #6c757d;
   border-radius: 5px;
   overflow: hidden;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 100%;
+  }
 `;
 
 const ProgressFill = styled.div`
