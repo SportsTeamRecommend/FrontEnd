@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Container,
   Header,
@@ -12,13 +12,22 @@ import {
   CheckboxGroup,
   CheckboxLabel,
 } from './WeightSlider.styles';
+import { f1Fields, kboFields } from '../../utils/testData';
 
-const WeightSlider = ({ labels, checkLabels, region }) => {
+const WeightSlider = ({ labels, checkLabels, region, type, onUpdate }) => {
+  const keyList = type === 'f1' ? f1Fields : kboFields;
+
   const [values, setValues] = useState(Array(labels.length).fill(0));
   const [selectedOptions, setSelectedOptions] = useState(
-    Array(labels.length).fill(null)
+    checkLabels.map((group) => (group ? 1 : null))
   );
   const [selectedRegion, setSelectedRegion] = useState('');
+
+  const mapWeight = (idx) => {
+    if (idx === 1) return 'HIGH';
+    if (idx === 2) return 'LOW';
+    return 'NONE';
+  };
 
   const handleChange = (idx, newValue) => {
     const updated = [...values];
@@ -31,6 +40,35 @@ const WeightSlider = ({ labels, checkLabels, region }) => {
     updated[groupIdx] = itemIdx;
     setSelectedOptions(updated);
   };
+
+  const buildPayload = () => {
+    const data = {};
+
+    keyList.forEach((field, idx) => {
+      const { preferenceKey, importanceKey } = field;
+
+      data[preferenceKey] = mapWeight(selectedOptions[idx]); // 라디오
+      data[importanceKey] = values[idx]; // 슬라이더
+    });
+    // ⭐ KBO일 때는 region 추가
+    if (type === 'kbo') {
+      data.userRegion = selectedRegion;
+    }
+    return data;
+  };
+
+  useEffect(() => {
+    if (type === 'kbo') {
+      onUpdate?.({
+        payload: buildPayload(), // 바디용
+        userRegion: selectedRegion, // 쿼리 파라미터용
+      });
+    } else {
+      onUpdate?.({
+        payload: buildPayload(), // 바디용
+      });
+    }
+  }, [values, selectedOptions, selectedRegion]);
 
   return (
     <Container>
@@ -51,8 +89,8 @@ const WeightSlider = ({ labels, checkLabels, region }) => {
                 >
                   <option value="">선택하세요</option>
                   {region.map((r, rIdx) => (
-                    <option key={rIdx} value={r}>
-                      {r}
+                    <option key={rIdx} value={r.value}>
+                      {r.label}
                     </option>
                   ))}
                 </Select>

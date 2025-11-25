@@ -16,6 +16,13 @@ const SportButton = styled.button`
   width: 300px;
   height: 100px;
 
+  @media (max-width: 767px) {
+    width: 220px;
+    height: 70px;
+    font-size: 1rem;
+    padding: 1rem 2rem;
+  }
+
   &:hover {
     transform: scale(1.05);
   }
@@ -41,9 +48,9 @@ const SportButton = styled.button`
         `;
       case 'resultPage':
         return css`
-          background-color: rgba(31, 41, 55, 0.4);
+          background-color: rgb(239, 68, 68);
           color: white;
-          height: 30px;
+          height: 50px;
           width: 250px;
         `;
       case 'statistics-f1':
@@ -56,6 +63,12 @@ const SportButton = styled.button`
           &:hover {
             background-color: rgb(220, 38, 38);
           }
+          @media (max-width: 767px) {
+            width: 150px;
+            height: 40px;
+            font-size: 1rem;
+            padding: 1rem 2rem;
+          }
         `;
       case 'statistics-kbo':
       case 'compare-baseball':
@@ -66,6 +79,12 @@ const SportButton = styled.button`
           background-color: rgb(29, 78, 216);
           &:hover {
             background-color: rgb(29, 78, 216);
+          }
+          @media (max-width: 767px) {
+            width: 150px;
+            height: 40px;
+            font-size: 1rem;
+            padding: 1rem 2rem;
           }
         `;
       default:

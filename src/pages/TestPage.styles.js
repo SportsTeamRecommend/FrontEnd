@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+const breakpoints = {
+  mobile: '767px',
+  tablet: '1023px',
+};
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -19,13 +24,24 @@ export const TestContainer = styled.div`
   flex-direction: row;
   gap: 20px;
   justify-content: center;
+
+  /* Tablet */
+  @media (max-width: ${breakpoints.tablet}) {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Mobile */
+  @media (max-width: ${breakpoints.mobile}) {
+    flex-direction: column;
+    gap: 16px;
+  }
 `;
 
 export const RankSection = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 600px;
-  height: 95%;
   background: rgba(31, 41, 55, 0.4);
   padding: 24px;
   border-radius: 16px;
@@ -35,13 +51,24 @@ export const RankSection = styled.div`
   gap: 20px;
   width: 20%;
   justify-content: space-around;
+  align-items: center;
+
+  /* Tablet */
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 60%;
+  }
+
+  /* Mobile */
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 90%;
+    min-height: auto;
+  }
 `;
 
 export const SliderSection = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 600px;
-  height: 95%;
   background: rgba(31, 41, 55, 0.4);
   padding: 24px;
   border-radius: 16px;
@@ -50,4 +77,15 @@ export const SliderSection = styled.div`
   font-family: system-ui, sans-serif;
   gap: 20px;
   width: 60%;
+
+  /* Tablet */
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 80%;
+  }
+
+  /* Mobile */
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 90%;
+    min-height: auto;
+  }
 `;

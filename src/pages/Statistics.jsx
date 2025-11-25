@@ -10,9 +10,9 @@ import { f1TopTeams, kboTopTeams } from '../utils/teamStatisticsData.js';
 
 import api from './../utils/axios.js';
 
-export const fetchF1Statistics = async (signal) => {
+const fetchF1Statistics = async () => {
   try {
-    const res = await api.get('/api/f1/statistics', { signal });
+    const res = await api.get('/api/f1/statistics');
 
     return res.data; // [{ team, recommended, likedPercentage }]
   } catch (error) {
@@ -20,8 +20,6 @@ export const fetchF1Statistics = async (signal) => {
     throw error;
   }
 };
-<<<<<<< Updated upstream
-=======
 const fetchKboStatistics = async () => {
   try {
     const res = await api.get('/api/kbo/statistics');
@@ -31,15 +29,11 @@ const fetchKboStatistics = async () => {
     throw error;
   }
 };
->>>>>>> Stashed changes
+
 
 const Statistics = () => {
   const [type, setType] = useState('f1');
   const [stats, setStats] = useState([]);
-
-  const abortRef = useRef(null);
-
-  const topTeams = type === 'f1' ? f1TopTeams : kboTopTeams;
 
   const statisticsF1 = () => {
     setType('f1');
@@ -49,21 +43,19 @@ const Statistics = () => {
   };
 
   useEffect(() => {
-    abortRef.current?.abort();
-    abortRef.current = new AbortController();
-
     const localTeamData = type === 'f1' ? f1TopTeams : kboTopTeams;
 
     const loadData = async () => {
       try {
-        // NOTE: 현재 F1 통계만 구현되어 있어 F1 데이터만 가져옵니다.
-        const apiData = type === 'f1' ? await fetchF1Statistics() : [];
-
-        console.log(`${type.toUpperCase()} API 실제 응답 데이터:`, apiData);
+        const apiData =
+          type === 'f1'
+            ? await fetchF1Statistics()
+            : await fetchKboStatistics();
+        // console.log(apiData);
 
         const icons = ['🥇', '🥈', '🥉'];
         const mergedData = apiData.map((apiTeam, index) => {
-          // API 응답의 team 이름(e.g., 'Ferrari')을 포함하는 로컬 데이터를 찾습니다.
+          // API 데이터의 team 이름을 포함하는 로컬 데이터를 찾기
           const localTeam = localTeamData.find((local) =>
             local.teamName.includes(apiTeam.team)
           );
@@ -73,28 +65,22 @@ const Statistics = () => {
             recommendations: apiTeam.recommended,
             likes: apiTeam.likedPercentage,
 
-            // 로컬 mock 데이터 사용 (이미지, 색상 등)
+            // 로컬 데이터 사용
             rank: index + 1,
             icon: index < 3 ? icons[index] : `${index + 1}`,
-            teamName: localTeam ? localTeam.teamName : apiTeam.team,
+            teamName: localTeam
+              ? localTeam.teamName.split(' (')[0]
+              : apiTeam.team,
             img: localTeam ? localTeam.img : null, // 일치하는 팀이 없으면 null
             color: localTeam ? localTeam.color : '#808080', // 기본 색상
           };
         });
-
-        setStats(mergedData);
+        setStats(mergedData); // 합친 데이터로 설정
       } catch (error) {
-        if (error.name !== 'AbortError') {
-          console.error(
-            `${type.toUpperCase()} 통계 데이터 조회 중 에러 발생`,
-            error
-          );
-        }
+        console.error(`통계 데이터 조회 중 에러 발생`, error);
       }
     };
     loadData();
-
-    return () => abortRef.current?.abort();
   }, [type]);
 
   const topThreeTeams = stats.slice(0, 3);

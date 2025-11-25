@@ -10,13 +10,14 @@ import {
   RankSection,
   SliderSection,
 } from './TestPage.styles';
+import api from '../utils/axios';
+import { useState } from 'react';
 
 const F1Test = () => {
   const nav = useNavigate();
+  const [data, setData] = useState([]);
+
   const goResultPage = () => {
-<<<<<<< Updated upstream
-    nav('/result');
-=======
     if (data && data.length > 0) {
       const resultData = { type: 'f1', teamName: data[0].name };
 
@@ -25,8 +26,19 @@ const F1Test = () => {
 
       nav(`/result`);
     }
->>>>>>> Stashed changes
   };
+
+  const handleSliderUpdate = async (payload) => {
+    try {
+      const res = await api.post('/api/f1/recommend', payload);
+      // console.log('POST 성공:', res.data);
+      setData(res.data);
+    } catch (err) {
+      console.error('POST 실패:', err);
+    }
+  };
+
+  const resultData = data.slice(0, 3);
 
   return (
     <Container>
@@ -37,10 +49,12 @@ const F1Test = () => {
             labels={f1SliderLabels}
             checkLabels={f1SliderCheckobx}
             region={null}
+            type={'f1'}
+            onUpdate={handleSliderUpdate}
           />
         </SliderSection>
         <RankSection>
-          <LiveResultCard type={'f1'} />
+          <LiveResultCard type={'f1'} data={resultData} />
           <Button
             text="결과 보러 가기"
             type="resultPage"

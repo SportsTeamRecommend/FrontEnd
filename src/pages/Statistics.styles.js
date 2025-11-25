@@ -54,4 +54,5 @@ export const PriceGrid = styled.div`
 export const SubPriceGrid = styled.div`
   display: flex;
   flex-direction: column;
+  width: 90%;
 `;

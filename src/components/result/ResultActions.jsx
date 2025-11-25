@@ -2,10 +2,30 @@ import styled from 'styled-components';
 
 const CardDescriptionWrapper = styled.div`
   padding-top: 10px;
-  gap: 4px;
-
-  width: 85%;
   margin-bottom: 70px;
+  gap: 4px;
+  width: 97%;
+`;
+
+const LikeShareButton = styled.button`
+  width: 100px;
+  height: 50px;
+  flex-shrink: 0;
+
+  color: white;
+  border-radius: 10px;
+  /* border: 2px solid #fff; */
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+
+  text-align: center;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+
+  background: ${(props) =>
+    props.like ? 'rgba(248, 92, 92, 0.93)' : 'rgba(86, 91, 98, 0.86)'};
 `;
 
 const DescriptionGroup = styled.div`
@@ -14,6 +34,7 @@ const DescriptionGroup = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
   width: 100%;
+  margin-bottom: 70px;
 `;
 const BaseText = styled.div`
   color: #fff;
@@ -29,6 +50,7 @@ const Title = styled(BaseText)`
 const Description = styled(BaseText)`
   font-size: 10px;
   line-height: 14px;
+  margin-bottom: 10px;
 `;
 
 const ButtonGroup = styled.div`
@@ -66,9 +88,15 @@ const KboButton = styled(Button)`
   background: rgba(25, 38, 71, 0.86);
 `;
 
-const ResultActions = () => {
+const ResultActions = ({ onClickLike }) => {
   return (
     <CardDescriptionWrapper>
+      <ButtonGroup>
+        <LikeShareButton like onClick={onClickLike}>
+          ❤️ 좋아요
+        </LikeShareButton>
+        <LikeShareButton>🔗 공유하기</LikeShareButton>
+      </ButtonGroup>
       <DescriptionGroup>
         <Title>용어 설명</Title>
         <Description>
