@@ -19,10 +19,6 @@ const LinkBox = styled.div`
   grid-template-columns: repeat(3, 1fr);
   gap: 10rem;
   margin-bottom: 1rem;
-  @media (max-width: 767px) {
-    gap: 0.8rem;
-    font-size: 0.6rem;
-  }
 `;
 
 const LinkTag = styled.a`

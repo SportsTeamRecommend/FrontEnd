@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const HomeContainer = styled.div`
   min-height: 100vh;
   position: relative;
-  overflow-x: hidden;
+  overflow: hidden;
 `;
 
 export const ContentGrid = styled.div`
@@ -17,7 +17,6 @@ export const LeftContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  text-align: center; /* 모바일 기준 */
 `;
 
 export const FirstText = styled.div`
@@ -32,19 +31,12 @@ export const MainTitle = styled.h1`
   font-weight: bold;
   color: #ffffff;
   line-height: 1.2;
-  @media (max-width: 767px) {
-    font-size: 1.5rem;
-  }
 `;
 
 export const Description = styled.div`
   font-size: 1.125rem;
   color: #f9fafb;
   line-height: 1.6;
-  @media (max-width: 767px) {
-    font-size: 0.9rem;
-    word-break: keep-all;
-  }
 `;
 
 export const ButtonContainer = styled.div`
@@ -102,19 +94,11 @@ export const DBTitle = styled.h2`
   font-weight: bold;
   color: #ffffff;
   margin-bottom: 1rem;
-  @media (max-width: 767px) {
-    font-size: 1.3rem;
-    word-break: keep-all;
-  }
 `;
 
 export const DBDescription = styled.p`
   color: #f3f4f6;
   font-size: 1.125rem;
-  @media (max-width: 767px) {
-    font-size: 0.9rem;
-    word-break: keep-all;
-  }
 `;
 
 export const DBGrid = styled.div`

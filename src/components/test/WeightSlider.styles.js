@@ -1,10 +1,5 @@
 import styled from 'styled-components';
 
-const breakpoints = {
-  mobile: '767px',
-  tablet: '1023px',
-};
-
 export const Container = styled.div`
   width: 100%;
 `;
@@ -28,18 +23,6 @@ export const List = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 35px;
   padding-right: 8px;
-
-  /* Tablet (2 → 1로 변경) */
-  @media (max-width: ${breakpoints.tablet}) {
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
-
-  /* Mobile (더 좁은 경우 padding 제거) */
-  @media (max-width: ${breakpoints.mobile}) {
-    padding-right: 0;
-    gap: 22px;
-  }
 `;
 
 export const Item = styled.div`
@@ -54,11 +37,6 @@ export const Item = styled.div`
   padding: 14px 18px;
   border-radius: 12px;
   background: rgba(37, 50, 67, 0.4);
-
-  /* Mobile — 내부 padding 조절해서 답답함 제거 */
-  @media (max-width: ${breakpoints.mobile}) {
-    padding: 12px 14px;
-  }
 `;
 
 export const LabelWrapper = styled.div`
@@ -89,12 +67,6 @@ export const Select = styled.select`
   &:hover {
     border-color: #ff6259;
   }
-
-  /* Mobile - 글자 사이즈 줄여서 넘침 방지 */
-  @media (max-width: ${breakpoints.mobile}) {
-    font-size: 12px;
-    padding: 5px 10px;
-  }
 `;
 
 export const Range = styled.input`
@@ -120,11 +92,6 @@ export const Value = styled.span`
   background: #2a3037;
   min-width: 36px;
   text-align: center;
-
-  @media (max-width: ${breakpoints.mobile}) {
-    font-size: 11px;
-    min-width: 32px;
-  }
 `;
 
 export const CheckboxGroup = styled.div`
@@ -160,11 +127,5 @@ export const CheckboxLabel = styled.label`
     width: 16px;
     height: 16px;
     accent-color: #ff6259;
-  }
-
-  /* Mobile - 버튼이 너무 커보여서 미세 조정 */
-  @media (max-width: ${breakpoints.mobile}) {
-    padding: 5px 10px;
-    font-size: 12px;
   }
 `;
