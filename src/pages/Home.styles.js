@@ -17,6 +17,7 @@ export const LeftContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  text-align: center; /* 모바일 기준 */
 `;
 
 export const FirstText = styled.div`
