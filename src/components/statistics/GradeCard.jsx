@@ -32,21 +32,21 @@ const PriceCard = styled.div`
   @media (max-width: ${breakpoints.mobile}) {
     width: 85%;
     max-width: 85%;
-    padding: 12px;
+    padding: 8px;
     ${({ $rank }) =>
       $rank === 1 &&
       css`
-        height: 280px;
+        min-height: 250px;
       `}
     ${({ $rank }) =>
       $rank === 2 &&
       css`
-        height: 250px;
+        min-height: 180px;
       `}
       ${({ $rank }) =>
       $rank === 3 &&
       css`
-        height: 220px;
+        min-height: 150px;
       `}
   }
 `;
@@ -137,8 +137,7 @@ const RecommendAndHeartGrid = styled.div`
   /* 📱 모바일에서는 세로 정렬 */
   @media (max-width: ${breakpoints.mobile}) {
     grid-template-columns: 1fr;
-    row-gap: 10px;
-    padding-top: 10px;
+    row-gap: 5px;
   }
 `;
 
