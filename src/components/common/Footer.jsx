@@ -47,7 +47,7 @@ const Footer = () => {
       <Divider />
       <LinkBox>
         <div className="text-box">
-          <LinkTag href="mailto:imde0205@gmail.com">imde0205@gmail.com</LinkTag>
+          <LinkTag href="mailto:imde0205@gmail.com">Mail</LinkTag>
         </div>
         <div className="text-box">
           <LinkTag href="https://docs.google.com/forms/d/e/1FAIpQLSfvKz1Y2eiLJXezSkOcq4jPb_RKqUvV_1xcTPt5zr7vQFmEfA/viewform?usp=dialog">
@@ -55,10 +55,12 @@ const Footer = () => {
           </LinkTag>
         </div>
         <div className="text-box">
-          <LinkTag href="/terms">이용약관</LinkTag>
+          <LinkTag href="https://github.com/SportsTeamRecommend">
+            Github
+          </LinkTag>
         </div>
       </LinkBox>
-      <Copy>© 2025 YourService. All Rights Reserved.</Copy>
+      <Copy>© 2025 MyTeamFinder. All Rights Reserved.</Copy>
     </Container>
   );
 };
