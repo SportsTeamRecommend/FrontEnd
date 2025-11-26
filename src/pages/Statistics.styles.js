@@ -103,10 +103,9 @@ export const SubPriceGrid = styled.div`
   display: flex;
   flex-direction: column;
   width: 90%;
-  max-width: 380px;
   text-align: center;
 
   @media (max-width: ${breakpoints.mobile}) {
-    width: 100%;
+    width: 90%;
   }
 `;

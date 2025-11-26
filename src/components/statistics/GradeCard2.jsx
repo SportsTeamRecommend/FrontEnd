@@ -55,7 +55,7 @@ const GradeText = styled.div`
   font-weight: 700;
 
   @media (max-width: ${breakpoints.mobile}) {
-    font-size: 22px;
+    font-size: 18px;
   }
 `;
 
@@ -91,7 +91,7 @@ const TeamName = styled.div`
   overflow: hidden;
 
   @media (max-width: ${breakpoints.mobile}) {
-    font-size: 18px;
+    font-size: 14px;
   }
 `;
 
