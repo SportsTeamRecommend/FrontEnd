@@ -53,12 +53,15 @@ const FloatBox = styled.div`
   /* delayClass prop으로 딜레이 결정 */
   ${({ $delay }) => delayStyles[$delay] || ''}
 
-  @media (max-width: 767px) {
-    left: ${({ $xy }) =>
-      `max(20px, min(${$xy.x}px, calc(70vw - 80px)))`} !important;
+  @media (max-width: 740px) {
+    left: ${({ $xy }) => {
+      const x = $xy.x < 0 ? -20 : 220;
+      return `${x}px`;
+    }};
     transform: translateX(0); /* 중심정렬 제거 */
-    max-width: 85%;
+    width: 65px;
     white-space: normal;
+    font-size: 0.7rem;
   }
 `;
 
