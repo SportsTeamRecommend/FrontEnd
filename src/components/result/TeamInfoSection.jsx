@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import copang from './../../assets/copang.jpg';
+import tving from './../../assets/tving.png';
 import dal from '../../assets/dalluck.png';
 
 const SectionWrapper = styled.div`
@@ -124,7 +125,8 @@ const Button = styled.button`
   line-height: normal;
 `;
 
-const TeamInfoSection = () => {
+const TeamInfoSection = ({ type }) => {
+  const text = type === 'f1' ? 'F1' : 'KBO';
   return (
     <SectionWrapper>
       <FirstContent>
@@ -150,9 +152,19 @@ const TeamInfoSection = () => {
       <ThirdContent>
         <BottunGroup>
           <ImageBox>
-            <img src={copang} alt="" />
+            <img src={type === 'f1' ? copang : tving} alt="" />
           </ImageBox>
-          <Button>F1 경기보러가기</Button>
+          <Button
+            onClick={() =>
+              type === 'f1'
+                ? window.open(
+                    'https://www.coupangplay.com/promotion/sportspass/'
+                  )
+                : window.open('https://www.tving.com/sports/kbo')
+            }
+          >
+            {text} 경기보러가기
+          </Button>
         </BottunGroup>
         <BottunGroup>
           <ImageBox>

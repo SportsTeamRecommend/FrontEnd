@@ -53,7 +53,7 @@ const Result = () => {
   // 좋아요 증가 api
   const handleAddLike = async () => {
     try {
-      await api.post(`/api/f1/${teamName}/like`);
+      await api.post(`/api/${type}/${teamName}/like`);
       // console.log(`${topTeamName} 팀 좋아요 증가`);
     } catch (err) {
       console.log(err);
@@ -62,13 +62,13 @@ const Result = () => {
 
   return (
     <ResultContainer>
-      <Header />
+      <Header type={type} />
       <LineContainer>
         <ResultCard teamName={teamName} type={type} />
-        <ResultActions onClickLike={handleAddLike} />
+        <ResultActions onClickLike={handleAddLike} type={type} />
       </LineContainer>
 
-      <TeamInfoSection teamName={teamName} />
+      <TeamInfoSection teamName={teamName} type={type} />
     </ResultContainer>
   );
 };

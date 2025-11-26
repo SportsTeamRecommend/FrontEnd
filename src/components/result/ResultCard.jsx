@@ -10,7 +10,7 @@ import {
   nationalityToKorean,
 } from '../../utils/nationalityMap';
 import { f1LogoMap, kboLogoMap } from '../../utils/teamLogoMap';
-import { f1Team } from '../../utils/teamColor';
+import { f1Team, kboTeam } from '../../utils/teamColor';
 
 const ResultCardWrapper = styled.div`
   display: flex;
@@ -82,12 +82,11 @@ const Content = styled.div`
 
 const ResultCard = ({ teamName, type }) => {
   const [teamData, setTeamData] = useState(null);
-  // console.log(teamData);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getAllTeamData(teamName);
+        const data = await getAllTeamData(type, teamName);
         setTeamData(data);
       } catch (error) {
         console.error(
@@ -102,9 +101,11 @@ const ResultCard = ({ teamName, type }) => {
 
   if (!teamData) return <div>팀 데이터를 불러오는 중입니다...</div>;
 
+  console.log(teamData);
+
   const logoMap = type === 'f1' ? f1LogoMap : kboLogoMap; // 결과 페이지 타입
   const logoSrc = logoMap[teamName] || ''; // 로컬 로고
-  const teamColor = f1Team[teamName] || '#FFFFFF'; // 팀 색상
+  const teamColor = type === 'f1' ? f1Team[teamName] : kboTeam[teamName]; // 팀 색상
 
   const isF1 = type === 'f1';
 
@@ -128,7 +129,25 @@ const ResultCard = ({ teamName, type }) => {
           },
         ],
       }
-    : null;
+    : {
+        name: teamData.players[0].name,
+        imageUrl: teamData.players[0].imageUrl,
+        infoList: [
+          {
+            icon: nationalityToEmoji[teamData.players[0].nationality] || '🏁',
+            label:
+              nationalityToKorean[teamData.players[0].nationality] || 'Null',
+          },
+          {
+            icon: '📅',
+            label: `${teamData.players[0].debutYear}년 데뷔`,
+          },
+          {
+            icon: '🎂',
+            label: teamData.players[0].dateOfBirth,
+          },
+        ],
+      };
 
   const driverData2 =
     isF1 && teamData.drivers.length > 1
@@ -151,27 +170,61 @@ const ResultCard = ({ teamName, type }) => {
             },
           ],
         }
-      : null;
+      : {
+          name: teamData.players[1].name,
+          imageUrl: teamData.players[1].imageUrl,
+          infoList: [
+            {
+              icon: nationalityToEmoji[teamData.players[1].nationality] || '🏁',
+              label:
+                nationalityToKorean[teamData.players[1].nationality] || 'Null',
+            },
+            {
+              icon: '📅',
+              label: `${teamData.players[1].debutYear}년 데뷔`,
+            },
+            {
+              icon: '🎂',
+              label: teamData.players[1].dateOfBirth,
+            },
+          ],
+        };
 
-  const allTimeStats = [
-    { label: 'WCC', value: teamData.worldChampionship },
-    {
-      label: 'WDC',
-      value: isF1
-        ? teamData.drivers[0].driverChampionship +
-          teamData.drivers[1].driverChampionship
-        : '-',
-    },
-    { label: '우승', value: teamData.careerWins },
-    { label: '포디움', value: teamData.careerPodiums },
-  ];
+  const allTimeStats = isF1
+    ? [
+        { label: 'WCC', value: teamData.worldChampionship },
+        {
+          label: 'WDC',
+          value:
+            teamData.drivers[0].driverChampionship +
+            teamData.drivers[1].driverChampionship,
+        },
+        { label: '우승', value: teamData.careerWins },
+        { label: '포디움', value: teamData.careerPodiums },
+      ]
+    : [
+        { label: '평균순위', value: teamData.avgRank },
+        {
+          label: '한국시리즈우승',
+          value: teamData.koreaSeasonWins,
+        },
+        { label: '정규시즌우승', value: teamData.leagueWins },
+        { label: '포스트시즌진출', value: teamData.postSeason },
+      ];
 
-  const seasonStats = [
-    { label: '순위', value: teamData.seasonPosition },
-    { label: '포인트', value: teamData.seasonPoint },
-    { label: '우승', value: teamData.seasonWins },
-    { label: '포디움', value: teamData.seasonPodiums },
-  ];
+  const seasonStats = isF1
+    ? [
+        { label: '순위', value: teamData.seasonPosition },
+        { label: '포인트', value: teamData.seasonPoint },
+        { label: '우승', value: teamData.seasonWins },
+        { label: '포디움', value: teamData.seasonPodiums },
+      ]
+    : [
+        { label: '시즌순위', value: teamData.seasonRank },
+        { label: '승률', value: teamData.winRate },
+        { label: '타율', value: teamData.battingAverage },
+        { label: '평균자책점', value: teamData.earnedRunAverage },
+      ];
 
   return (
     <ResultCardWrapper>
@@ -186,7 +239,7 @@ const ResultCard = ({ teamName, type }) => {
         </Text>
       </Header>
       <Content>
-        {isF1 && driverData1 && (
+        {driverData1 && (
           <PlayerCard
             name={driverData1.name}
             imageUrl={driverData1.imageUrl}
@@ -194,7 +247,7 @@ const ResultCard = ({ teamName, type }) => {
             style={{ gridArea: 'player1' }}
           />
         )}
-        {isF1 && driverData2 && (
+        {driverData2 && (
           <PlayerCard
             name={driverData2.name}
             imageUrl={driverData2.imageUrl}

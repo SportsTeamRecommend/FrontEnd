@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const CardDescriptionWrapper = styled.div`
@@ -88,7 +89,27 @@ const KboButton = styled(Button)`
   background: rgba(25, 38, 71, 0.86);
 `;
 
-const ResultActions = ({ onClickLike }) => {
+const ResultActions = ({ onClickLike, type }) => {
+  const nav = useNavigate();
+
+  const text = type === 'f1' ? 'KBO' : 'F1';
+  const color = type === 'f1' ? '#2563EB' : '#EF4444';
+
+  const handleRetry = () => {
+    if (type === 'f1') {
+      nav('/test/f1');
+    } else {
+      nav('/test/baseball');
+    }
+  };
+  const handleGoTo = () => {
+    if (type === 'f1') {
+      nav('/test/baseball');
+    } else {
+      nav('/test/f1');
+    }
+  };
+
   return (
     <CardDescriptionWrapper>
       <ButtonGroup>
@@ -109,8 +130,10 @@ const ResultActions = ({ onClickLike }) => {
         </Description>
       </DescriptionGroup>
       <ButtonGroup>
-        <RetryButton>다시 테스트하기</RetryButton>
-        <KboButton>KBO 테스트하기</KboButton>
+        <RetryButton onClick={handleRetry}>다시 테스트하기</RetryButton>
+        <KboButton onClick={handleGoTo} style={{ background: color }}>
+          {text} 테스트하기
+        </KboButton>
       </ButtonGroup>
     </CardDescriptionWrapper>
   );
