@@ -14,15 +14,9 @@ const PriceCard = styled.div`
   margin-bottom: 24px;
   min-width: 500px;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
-
-  /* 📱 모바일에서는 세로 카드로 변경 */
   @media (max-width: ${breakpoints.mobile}) {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-    width: 90%;
-    min-width: 90%;
-    padding: 16px;
+    gap: 15px;
+    min-width: 300px;
   }
 `;
 
@@ -34,7 +28,7 @@ const ItemInfo = styled.div`
 
   @media (max-width: ${breakpoints.mobile}) {
     margin-right: 0;
-    width: 100%;
+    width: 200px;
     justify-content: flex-start;
   }
 `;
@@ -88,10 +82,11 @@ const TeamName = styled.div`
   font-size: 20px;
   font-weight: 700;
   white-space: nowrap;
-  overflow: hidden;
 
   @media (max-width: ${breakpoints.mobile}) {
     font-size: 14px;
+    word-break: keep-all;
+    white-space: normal;
   }
 `;
 
@@ -101,10 +96,9 @@ const ItemStats = styled.div`
   gap: 16px;
 
   @media (max-width: ${breakpoints.mobile}) {
-    flex-direction: column;
     align-items: flex-start;
-    width: 100%;
-    gap: 12px;
+    width: 90%;
+    gap: 10px;
   }
 `;
 
@@ -113,6 +107,10 @@ const StatGroup = styled.div`
   flex-direction: column;
   gap: 4px;
   white-space: nowrap;
+  @media (max-width: 500px) {
+    flex-direction: row;
+    align-items: center;
+  }
 `;
 
 const Text = styled.div`
@@ -139,8 +137,8 @@ const ProgressBar = styled.div`
   border-radius: 5px;
   overflow: hidden;
 
-  @media (max-width: ${breakpoints.mobile}) {
-    width: 100%;
+  @media (max-width: 500px) {
+    display: none;
   }
 `;
 

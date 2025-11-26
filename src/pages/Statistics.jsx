@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import * as S from './Statistics.styles.js';
 
@@ -29,7 +29,6 @@ const fetchKboStatistics = async () => {
     throw error;
   }
 };
-
 
 const Statistics = () => {
   const [type, setType] = useState('f1');
