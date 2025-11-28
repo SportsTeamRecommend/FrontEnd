@@ -120,14 +120,17 @@ const ResultActions = ({ onClickLike, type }) => {
       </ButtonGroup>
       <DescriptionGroup>
         <Title>용어 설명</Title>
-        <Description>
-          WCC : 1년동안 가장 많은 포인트를 가져간 팀이 차지하는 팀 우승
-          <br />
-          WDC : 1년동안 가장 많은 포인트를 획득한 드라이버가 차지하는 개인 우승
-          <br />
-          포디움 : 각 경기마다 3위 안에 든 횟수 <br />
-          우승 : 각 경기마다 1위한 횟수 <br />
-        </Description>
+        {type === 'f1' ? (
+          <Description>
+            WCC : 1년동안 가장 많은 포인트를 가져간 팀이 차지하는 팀 우승
+            <br />
+            WDC : 1년동안 가장 많은 포인트를 획득한 드라이버가 차지하는 개인
+            우승
+            <br />
+            포디움 : 각 경기마다 3위 안에 든 횟수 <br />
+            우승 : 각 경기마다 1위한 횟수 <br />
+          </Description>
+        ) : null}
       </DescriptionGroup>
       <ButtonGroup>
         <RetryButton onClick={handleRetry}>다시 테스트하기</RetryButton>

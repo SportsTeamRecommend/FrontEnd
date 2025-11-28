@@ -17,6 +17,7 @@ export const nationalityToEmoji = {
   'New Zealand': '🇳🇿',
   Italy: '🇮🇹',
   Brazil: '🇧🇷',
+  대한민국: '🇰🇷',
 };
 
 export const nationalityToKorean = {
@@ -38,4 +39,5 @@ export const nationalityToKorean = {
   'New Zealand': '뉴질랜드',
   Italy: '이탈리아',
   Brazil: '브라질',
+  대한민국: '대한민국',
 };

@@ -101,7 +101,7 @@ const ResultCard = ({ teamName, type }) => {
 
   if (!teamData) return <div>팀 데이터를 불러오는 중입니다...</div>;
 
-  console.log(teamData);
+  // console.log(teamData);
 
   const logoMap = type === 'f1' ? f1LogoMap : kboLogoMap; // 결과 페이지 타입
   const logoSrc = logoMap[teamName] || ''; // 로컬 로고
