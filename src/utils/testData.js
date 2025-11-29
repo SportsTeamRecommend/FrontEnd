@@ -2,9 +2,9 @@ export const f1SliderLabels = [
   '팀 성적',
   '선수 성적',
   '근본',
-  '팬덤 규모',
   '언더독',
   '프랜차이즈',
+  '팬덤 규모',
 ];
 
 export const baseballSliderLabels = [
@@ -33,11 +33,6 @@ export const f1Fields = [
     importanceKey: 'legacyImportance',
   },
   {
-    label: '팬덤 규모',
-    preferenceKey: 'fandomPreference',
-    importanceKey: 'fandomImportance',
-  },
-  {
     label: '언더독',
     preferenceKey: 'underdogPreference',
     importanceKey: 'underdogImportance',
@@ -46,6 +41,11 @@ export const f1Fields = [
     label: '프랜차이즈',
     preferenceKey: 'franchiseStarPreference',
     importanceKey: 'franchiseStarImportance',
+  },
+  {
+    label: '팬덤 규모',
+    preferenceKey: 'fandomPreference',
+    importanceKey: 'fandomImportance',
   },
 ];
 
@@ -90,9 +90,9 @@ export const f1SliderCheckobx = [
   ['상관없음', '강팀', '약팀'],
   ['상관없음', '좋음', '나쁨'],
   ['상관없음', '전통', '신생'],
-  ['상관없음', '큼', '작음'],
   ['상관없음', '언더독'],
   ['상관없음', '프랜차이즈'],
+  ['상관없음', '큼', '작음'],
 ];
 
 export const baseballSliderCheckobx = [
