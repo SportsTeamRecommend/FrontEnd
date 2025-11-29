@@ -18,7 +18,7 @@ const MainTitle = styled.h1`
   font-weight: bold;
   margin-top: 0;
   margin-bottom: 2px; /* 제목과 부제목 사이 간격 */
-  gap: 10px;
+  gap: 8px;
 `;
 
 // 부제목: "당신의 성향 분석 결과를..."
@@ -28,14 +28,16 @@ const Subtitle = styled.p`
   margin: 0; /* 위아래 마진 제거 */
 `;
 
-const Header = () => {
+const Header = ({ type }) => {
+  const color = type === 'f1' ? '#EF4444' : '#2563EB';
+  const text = type === 'f1' ? 'F1' : 'KBO';
   return (
     <HeaderWrapper>
       <MainTitle>
-        당신에게 추천하는 <span style={{ color: 'red' }}>F1 팀</span>
+        당신에게 추천하는 <span style={{ color: color }}>{text}</span>팀
       </MainTitle>
       <Subtitle>
-        당신의 성향 분석 결과를 바탕으로 가장 잘 맞는 F1 팀을 찾았습니다!
+        당신의 성향 분석 결과를 바탕으로 가장 잘 맞는 {text} 팀을 찾았습니다!
       </Subtitle>
     </HeaderWrapper>
   );

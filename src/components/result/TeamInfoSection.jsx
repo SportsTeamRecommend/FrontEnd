@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import copang from './../../assets/copang.jpg';
+import tving from './../../assets/tving.png';
 import dal from '../../assets/dalluck.png';
 
 const SectionWrapper = styled.div`
@@ -69,12 +70,6 @@ const VideoContanier = styled.div`
   background: rgba(55, 65, 81, 0.5);
   padding: 20px 10px;
 `;
-const TeamDescriptionCard = styled.div`
-  flex: 1;
-  border-radius: 10px;
-  background: rgba(55, 65, 81, 0.5);
-  padding: 20px 10px;
-`;
 
 const ThirdContent = styled.div`
   display: flex;
@@ -99,7 +94,7 @@ const ImageBox = styled.button`
   background-color: #fff;
 
   img {
-    width: 100%;
+    width: 115%;
     height: 100%;
     object-fit: cover;
     border-radius: 10px;
@@ -124,21 +119,21 @@ const Button = styled.button`
   line-height: normal;
 `;
 
-const TeamInfoSection = () => {
+const TeamInfoSection = ({ type }) => {
+  const text = type === 'f1' ? 'F1' : 'KBO';
   return (
     <SectionWrapper>
       <FirstContent>
         <MainTitle>팀 정보</MainTitle>
         <MainDescription>
-          이 팀의 기원은 1997년 F1 3회 챔프인 재키 스튜어트와 그의 아들 폴
-          스튜어트가 설립한 스튜어트 그랑프리로 거슬러 올라간다. 창단 초반엔
-          신생팀답게 하위권을 전전하다 3년차인 99년 4위로 뛰어올라간 후, 포드에
-          매각되었고, 포드는 영국에서 인수한 브랜드인 재규어의 이름을 붙여
-          "재규어 레이싱"이라 명명한 후 2000 시즌부터 F1에 참전한다. F1 3회
-          챔프인 니키 라우다를 대표로 영입하는 등 의욕적인 행보를 보였지만,
-          재규어 레이싱의 이름으로 참전한 다섯 시즌의 순위는 98777. 결국 2004
-          시즌을 끝으로 이 팀은 각종 모터 스포츠 및 익스트림 스포츠에 눈독을
-          들이고 있던 레드불에게 인수된다. 그리하여 현재의 레드불 레이싱이 탄생.
+          한화 이글스는 대전을 연고로 하며, KBO 리그에서 가장 열정적이고 의리
+          있는 팬덤을 보유한 구단입니다. 과거 '다이너마이트 타선'이라 불리던
+          화끈한 공격력과 1999년 한국시리즈 우승의 영광을 간직하고 있습니다.
+          팀이 어려울 때도 변치 않는 응원을 보내는 팬들은 '보살 팬'이라는
+          애칭으로 불릴 만큼 깊은 사랑을 자랑합니다. 최근에는 메이저리그에서
+          돌아온 '괴물' 류현진의 복귀와 문동주, 노시환 등 젊은 스타들의 활약으로
+          새로운 비상을 준비하고 있습니다. 승패를 떠나 끈끈한 낭만과 드라마를
+          경험하고 싶다면 최고의 선택이 될 팀입니다.
         </MainDescription>
       </FirstContent>
       <SecondContent>
@@ -150,9 +145,19 @@ const TeamInfoSection = () => {
       <ThirdContent>
         <BottunGroup>
           <ImageBox>
-            <img src={copang} alt="" />
+            <img src={type === 'f1' ? copang : tving} alt="" />
           </ImageBox>
-          <Button>F1 경기보러가기</Button>
+          <Button
+            onClick={() =>
+              type === 'f1'
+                ? window.open(
+                    'https://www.coupangplay.com/promotion/sportspass/'
+                  )
+                : window.open('https://www.tving.com/sports/kbo')
+            }
+          >
+            {text} 경기보러가기
+          </Button>
         </BottunGroup>
         <BottunGroup>
           <ImageBox>

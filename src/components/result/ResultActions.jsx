@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const CardDescriptionWrapper = styled.div`
@@ -88,7 +89,27 @@ const KboButton = styled(Button)`
   background: rgba(25, 38, 71, 0.86);
 `;
 
-const ResultActions = ({ onClickLike }) => {
+const ResultActions = ({ onClickLike, type }) => {
+  const nav = useNavigate();
+
+  const text = type === 'f1' ? 'KBO' : 'F1';
+  const color = type === 'f1' ? '#2563EB' : '#EF4444';
+
+  const handleRetry = () => {
+    if (type === 'f1') {
+      nav('/test/f1');
+    } else {
+      nav('/test/baseball');
+    }
+  };
+  const handleGoTo = () => {
+    if (type === 'f1') {
+      nav('/test/baseball');
+    } else {
+      nav('/test/f1');
+    }
+  };
+
   return (
     <CardDescriptionWrapper>
       <ButtonGroup>
@@ -99,18 +120,23 @@ const ResultActions = ({ onClickLike }) => {
       </ButtonGroup>
       <DescriptionGroup>
         <Title>용어 설명</Title>
-        <Description>
-          WCC : 1년동안 가장 많은 포인트를 가져간 팀이 차지하는 팀 우승
-          <br />
-          WDC : 1년동안 가장 많은 포인트를 획득한 드라이버가 차지하는 개인 우승
-          <br />
-          포디움 : 각 경기마다 3위 안에 든 횟수 <br />
-          우승 : 각 경기마다 1위한 횟수 <br />
-        </Description>
+        {type === 'f1' ? (
+          <Description>
+            WCC : 1년동안 가장 많은 포인트를 가져간 팀이 차지하는 팀 우승
+            <br />
+            WDC : 1년동안 가장 많은 포인트를 획득한 드라이버가 차지하는 개인
+            우승
+            <br />
+            포디움 : 각 경기마다 3위 안에 든 횟수 <br />
+            우승 : 각 경기마다 1위한 횟수 <br />
+          </Description>
+        ) : null}
       </DescriptionGroup>
       <ButtonGroup>
-        <RetryButton>다시 테스트하기</RetryButton>
-        <KboButton>KBO 테스트하기</KboButton>
+        <RetryButton onClick={handleRetry}>다시 테스트하기</RetryButton>
+        <KboButton onClick={handleGoTo} style={{ background: color }}>
+          {text} 테스트하기
+        </KboButton>
       </ButtonGroup>
     </CardDescriptionWrapper>
   );
