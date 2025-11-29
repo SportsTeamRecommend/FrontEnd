@@ -30,7 +30,7 @@ const F1Test = () => {
 
   const handleSliderUpdate = async (payload) => {
     try {
-      const res = await api.post('/api/f1/recommend', payload);
+      const res = await api.post('/api/f1/recommend', payload.payload);
       // console.log('POST 성공:', res.data);
       setData(res.data);
     } catch (err) {

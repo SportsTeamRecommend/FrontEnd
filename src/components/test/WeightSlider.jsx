@@ -50,7 +50,7 @@ const WeightSlider = ({ labels, checkLabels, region, type, onUpdate }) => {
       data[preferenceKey] = mapWeight(selectedOptions[idx]); // 라디오
       data[importanceKey] = values[idx]; // 슬라이더
     });
-    // ⭐ KBO일 때는 region 추가
+    // KBO일 때는 region 추가
     if (type === 'kbo') {
       data.userRegion = selectedRegion;
     }

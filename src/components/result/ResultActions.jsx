@@ -113,9 +113,7 @@ const ResultActions = ({ onClickLike, type }) => {
   return (
     <CardDescriptionWrapper>
       <ButtonGroup>
-        <LikeShareButton like onClick={onClickLike}>
-          ❤️ 좋아요
-        </LikeShareButton>
+        <LikeShareButton onClick={onClickLike}>❤️ 좋아요</LikeShareButton>
         <LikeShareButton>🔗 공유하기</LikeShareButton>
       </ButtonGroup>
       <DescriptionGroup>
