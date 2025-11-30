@@ -45,6 +45,7 @@ const MainDescription = styled.div`
   align-items: start;
   flex-shrink: 0;
   text-align: left;
+  word-break: keep-all;
 `;
 
 const SecondContent = styled.div`
