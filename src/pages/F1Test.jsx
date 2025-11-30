@@ -17,13 +17,21 @@ const F1Test = () => {
   const nav = useNavigate();
   const [data, setData] = useState([]);
 
-  const goResultPage = () => {
+  const recommend = async (teamName) => {
+    try {
+      await api.post(`/api/f1/${teamName}/recommended`);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const goResultPage = async () => {
     if (data && data.length > 0) {
       const resultData = { type: 'f1', teamName: data[0].name };
 
       // 세션 스토리지
       sessionStorage.setItem('testResult', JSON.stringify(resultData));
-
+      await recommend(resultData.teamName);
       nav(`/result`);
     }
   };
