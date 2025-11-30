@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import StatCard from './StatCard';
 import PlayerCard from './PlayerCard';
 
-import { getAllTeamData } from '../../utils/allTeamData';
+import { getAllTeamData, reverseBirth } from '../../utils/allTeamData';
 import { useEffect, useState } from 'react';
 import {
   nationalityToEmoji,
@@ -97,7 +97,7 @@ const ResultCard = ({ teamName, type }) => {
     };
 
     fetchData(); // 페이지 로드 시 팀 데이터 가져오기
-  }, [teamName]);
+  }, [teamName, type]);
 
   if (!teamData) return <div>팀 데이터를 불러오는 중입니다...</div>;
 
@@ -125,7 +125,7 @@ const ResultCard = ({ teamName, type }) => {
           },
           {
             icon: '🎂',
-            label: teamData.drivers[0].dateOfBirth,
+            label: reverseBirth(teamData.drivers[0].dateOfBirth),
           },
         ],
       }
@@ -144,7 +144,7 @@ const ResultCard = ({ teamName, type }) => {
           },
           {
             icon: '🎂',
-            label: teamData.players[0].dateOfBirth,
+            label: reverseBirth(teamData.players[0].dateOfBirth),
           },
         ],
       };
@@ -166,7 +166,7 @@ const ResultCard = ({ teamName, type }) => {
             },
             {
               icon: '🎂',
-              label: teamData.drivers[1].dateOfBirth,
+              label: reverseBirth(teamData.drivers[1].dateOfBirth),
             },
           ],
         }
@@ -185,7 +185,7 @@ const ResultCard = ({ teamName, type }) => {
             },
             {
               icon: '🎂',
-              label: teamData.players[1].dateOfBirth,
+              label: reverseBirth(teamData.players[1].dateOfBirth),
             },
           ],
         };
