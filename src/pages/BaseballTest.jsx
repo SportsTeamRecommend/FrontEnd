@@ -16,6 +16,7 @@ import {
 } from './TestPage.styles';
 import { useState } from 'react';
 import api from '../utils/axios';
+import { toast } from 'react-toastify';
 
 const BaseballTest = () => {
   const nav = useNavigate();
@@ -29,6 +30,8 @@ const BaseballTest = () => {
       sessionStorage.setItem('testResult', JSON.stringify(resultData));
 
       nav(`/result`);
+    } else {
+      toast.error('연고지를 선택해주세요.');
     }
   };
 

@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import api from '../utils/axios';
 
+import { toast } from 'react-toastify';
+
 const ResultContainer = styled.div`
   color: white;
   display: flex;
@@ -41,7 +43,7 @@ const Result = () => {
       setTeamName(teamName);
     } else {
       // 저장된 값이 없으면 사용자에게 알리고 홈으로 이동
-      alert('검사 결과가 없습니다. 테스트를 먼저 진행해주세요.');
+      toast.error('검사 결과가 없습니다. 테스트를 먼저 진행해주세요.');
       nav('/');
     }
   }, [nav]);
@@ -55,6 +57,7 @@ const Result = () => {
     try {
       await api.post(`/api/${type}/${teamName}/like`);
       // console.log(`${topTeamName} 팀 좋아요 증가`);
+      toast.success('좋아요가 반영되었습니다.');
     } catch (err) {
       console.log(err);
     }
