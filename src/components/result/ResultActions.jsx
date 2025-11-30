@@ -26,7 +26,7 @@ const LikeShareButton = styled.button`
   font-weight: 700;
   line-height: normal;
 
-  background: ${(props) =>
+  background-color: ${(props) =>
     props.like ? 'rgba(248, 92, 92, 0.93)' : 'rgba(86, 91, 98, 0.86)'};
 `;
 
@@ -61,6 +61,16 @@ const ButtonGroup = styled.div`
   justify-content: center;
   gap: 40px;
 `;
+
+const TryButtonGroup = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
 const Button = styled.button`
   border-radius: 15px;
   background: rgba(86, 91, 98, 0.86);
@@ -82,6 +92,10 @@ const Button = styled.button`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 const RetryButton = styled(Button)`
   background: rgba(86, 91, 98, 0.86);
@@ -118,7 +132,9 @@ const ResultActions = ({ onClickLike, type }) => {
   return (
     <CardDescriptionWrapper>
       <ButtonGroup>
-        <LikeShareButton onClick={onClickLike}>❤️ 좋아요</LikeShareButton>
+        <LikeShareButton onClick={onClickLike} like={'like'}>
+          ❤️ 좋아요
+        </LikeShareButton>
         <LikeShareButton onClick={onClickShare}>🔗 공유하기</LikeShareButton>
       </ButtonGroup>
       <DescriptionGroup>
@@ -135,12 +151,12 @@ const ResultActions = ({ onClickLike, type }) => {
           </Description>
         ) : null}
       </DescriptionGroup>
-      <ButtonGroup>
+      <TryButtonGroup>
         <RetryButton onClick={handleRetry}>다시 테스트하기</RetryButton>
         <KboButton onClick={handleGoTo} style={{ background: color }}>
           {text} 테스트하기
         </KboButton>
-      </ButtonGroup>
+      </TryButtonGroup>
     </CardDescriptionWrapper>
   );
 };
