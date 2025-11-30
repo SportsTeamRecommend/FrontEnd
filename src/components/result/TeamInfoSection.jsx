@@ -8,13 +8,15 @@ import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { getAllTeamData } from '../../utils/allTeamData';
 
+import YouTube from 'react-youtube';
+
 const SectionWrapper = styled.div`
   color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 12px 58px;
+  padding: 12px 40px;
   box-sizing: border-box;
   gap: 27px;
   width: 100%;
@@ -54,6 +56,10 @@ const SecondContent = styled.div`
   gap: 21px;
   width: 100%;
   align-items: stretch;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 const Box = styled.div`
   display: flex;
@@ -81,6 +87,11 @@ const ThirdContent = styled.div`
   align-items: center;
   justify-content: center;
   gap: 56px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 28px;
+  }
 `;
 const BottunGroup = styled.div`
   display: flex;
@@ -124,6 +135,14 @@ const Button = styled.button`
   line-height: normal;
 `;
 
+// YouTube 비디오 ID 추출 함수
+const getYouTubeVideoId = (url) => {
+  if (!url) return null;
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  const match = url.match(regExp);
+  return (match && match[2].length === 11) ? match[2] : null;
+};
+
 const TeamInfoSection = ({ teamName, type }) => {
   const text = type === 'f1' ? 'F1' : 'KBO';
 
@@ -145,11 +164,15 @@ const TeamInfoSection = ({ teamName, type }) => {
     fetchData(); // 페이지 로드 시 팀 데이터 가져오기
   }, [teamName, type]);
 
+  console.log(teamData);
+
   const onClickSaveCalender = () => {
     toast.info('아직 지원하지 않는 기능입니다.');
   };
 
   if (!teamData) return <div>팀 데이터를 불러오는 중입니다...</div>;
+
+  const videoId = getYouTubeVideoId(teamData.videoUrl); // videoId 추출
 
   return (
     <SectionWrapper>
@@ -160,8 +183,20 @@ const TeamInfoSection = ({ teamName, type }) => {
       <SecondContent>
         <Box flex={2}>
           <BoxTitle>하이라이트</BoxTitle>
-          {/* videoUrl 받은 후 <iframe> 태그 사용*/}
-          <VideoContanier></VideoContanier>
+          <VideoContanier>
+            {videoId ? (
+              <YouTube videoId={videoId} opts={{
+                width: '100%', // 부모 컨테이너에 맞게 너비 조절
+                height: '200', // 적절한 높이 설정
+                playerVars: {
+                  autoplay: 0, // 자동 재생 비활성화
+                  modestbranding: 1, // YouTube 로고 숨기기
+                },
+              }} />
+            ) : (
+              <div>영상을 불러올 수 없습니다.</div>
+            )}
+          </VideoContanier>
         </Box>
       </SecondContent>
       <ThirdContent>

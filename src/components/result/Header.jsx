@@ -26,6 +26,10 @@ const Subtitle = styled.p`
   font-size: 18px;
   color: #bdc1c6; /* 메인 제목보다 약간 어두운 회색 */
   margin: 0; /* 위아래 마진 제거 */
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 const Header = ({ type }) => {
