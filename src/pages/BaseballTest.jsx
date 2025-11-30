@@ -16,19 +16,30 @@ import {
 } from './TestPage.styles';
 import { useState } from 'react';
 import api from '../utils/axios';
+import { toast } from 'react-toastify';
 
 const BaseballTest = () => {
   const nav = useNavigate();
   const [data, setData] = useState([]);
 
-  const goResultPage = () => {
+  const recommend = async (teamName) => {
+    try {
+      await api.post(`/api/kbo/${teamName}/recommended`);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const goResultPage = async () => {
     if (data && data.length > 0) {
       const resultData = { type: 'kbo', teamName: data[0].name };
 
       // 세션 스토리지
       sessionStorage.setItem('testResult', JSON.stringify(resultData));
-
+      await recommend(resultData.teamName);
       nav(`/result`);
+    } else {
+      toast.error('연고지를 선택해주세요.');
     }
   };
 

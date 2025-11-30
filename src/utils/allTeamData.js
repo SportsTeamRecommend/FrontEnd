@@ -11,3 +11,8 @@ export const getAllTeamData = async (type, teamName) => {
     throw error;
   }
 };
+
+export const reverseBirth = (birth) => {
+  const arr = birth.split('/');
+  return arr.reverse().join('/');
+};

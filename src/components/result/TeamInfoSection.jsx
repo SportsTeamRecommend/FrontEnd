@@ -4,6 +4,10 @@ import copang from './../../assets/copang.jpg';
 import tving from './../../assets/tving.png';
 import dal from '../../assets/dalluck.png';
 
+import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
+import { getAllTeamData } from '../../utils/allTeamData';
+
 const SectionWrapper = styled.div`
   color: white;
   display: flex;
@@ -41,6 +45,7 @@ const MainDescription = styled.div`
   align-items: start;
   flex-shrink: 0;
   text-align: left;
+  word-break: keep-all;
 `;
 
 const SecondContent = styled.div`
@@ -119,26 +124,43 @@ const Button = styled.button`
   line-height: normal;
 `;
 
-const TeamInfoSection = ({ type }) => {
+const TeamInfoSection = ({ teamName, type }) => {
   const text = type === 'f1' ? 'F1' : 'KBO';
+
+  const [teamData, setTeamData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getAllTeamData(type, teamName);
+        setTeamData(data);
+      } catch (error) {
+        console.error(
+          '팀 정보 데이터를 가져오는 데 오류가 발생했습니다.',
+          error
+        );
+      }
+    };
+
+    fetchData(); // 페이지 로드 시 팀 데이터 가져오기
+  }, [teamName, type]);
+
+  const onClickSaveCalender = () => {
+    toast.info('아직 지원하지 않는 기능입니다.');
+  };
+
+  if (!teamData) return <div>팀 데이터를 불러오는 중입니다...</div>;
+
   return (
     <SectionWrapper>
       <FirstContent>
         <MainTitle>팀 정보</MainTitle>
-        <MainDescription>
-          한화 이글스는 대전을 연고로 하며, KBO 리그에서 가장 열정적이고 의리
-          있는 팬덤을 보유한 구단입니다. 과거 '다이너마이트 타선'이라 불리던
-          화끈한 공격력과 1999년 한국시리즈 우승의 영광을 간직하고 있습니다.
-          팀이 어려울 때도 변치 않는 응원을 보내는 팬들은 '보살 팬'이라는
-          애칭으로 불릴 만큼 깊은 사랑을 자랑합니다. 최근에는 메이저리그에서
-          돌아온 '괴물' 류현진의 복귀와 문동주, 노시환 등 젊은 스타들의 활약으로
-          새로운 비상을 준비하고 있습니다. 승패를 떠나 끈끈한 낭만과 드라마를
-          경험하고 싶다면 최고의 선택이 될 팀입니다.
-        </MainDescription>
+        <MainDescription>{teamData.description}</MainDescription>
       </FirstContent>
       <SecondContent>
         <Box flex={2}>
           <BoxTitle>하이라이트</BoxTitle>
+          {/* videoUrl 받은 후 <iframe> 태그 사용*/}
           <VideoContanier></VideoContanier>
         </Box>
       </SecondContent>
@@ -163,7 +185,7 @@ const TeamInfoSection = ({ type }) => {
           <ImageBox>
             <img src={dal} alt="" />
           </ImageBox>
-          <Button>달력에 경기 일정 저장</Button>
+          <Button onClick={onClickSaveCalender}>달력에 경기 일정 저장</Button>
         </BottunGroup>
       </ThirdContent>
     </SectionWrapper>

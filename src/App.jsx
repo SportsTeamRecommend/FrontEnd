@@ -7,6 +7,8 @@ import Result from './pages/Result';
 import Compare from './pages/Compare';
 import Statistics from './pages/Statistics';
 import Layout from './Layout';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -21,6 +23,13 @@ function App() {
           <Route path="/statistics" element={<Statistics />}></Route>
         </Route>
       </Routes>
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        pauseOnHover
+        theme="light"
+      />
     </>
   );
 }
