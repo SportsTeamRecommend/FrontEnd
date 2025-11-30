@@ -4,6 +4,8 @@ import copang from './../../assets/copang.jpg';
 import tving from './../../assets/tving.png';
 import dal from '../../assets/dalluck.png';
 
+import { toast } from 'react-toastify';
+
 const SectionWrapper = styled.div`
   color: white;
   display: flex;
@@ -121,6 +123,11 @@ const Button = styled.button`
 
 const TeamInfoSection = ({ type }) => {
   const text = type === 'f1' ? 'F1' : 'KBO';
+
+  const onClickSaveCalender = () => {
+    toast.info('아직 지원하지 않는 기능입니다.');
+  };
+
   return (
     <SectionWrapper>
       <FirstContent>
@@ -163,7 +170,7 @@ const TeamInfoSection = ({ type }) => {
           <ImageBox>
             <img src={dal} alt="" />
           </ImageBox>
-          <Button>달력에 경기 일정 저장</Button>
+          <Button onClick={onClickSaveCalender}>달력에 경기 일정 저장</Button>
         </BottunGroup>
       </ThirdContent>
     </SectionWrapper>

@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { toast } from 'react-toastify';
 
 const CardDescriptionWrapper = styled.div`
   padding-top: 10px;
@@ -110,11 +111,15 @@ const ResultActions = ({ onClickLike, type }) => {
     }
   };
 
+  const onClickShare = () => {
+    toast.info('아직 지원하지 않는 기능입니다.');
+  };
+
   return (
     <CardDescriptionWrapper>
       <ButtonGroup>
         <LikeShareButton onClick={onClickLike}>❤️ 좋아요</LikeShareButton>
-        <LikeShareButton>🔗 공유하기</LikeShareButton>
+        <LikeShareButton onClick={onClickShare}>🔗 공유하기</LikeShareButton>
       </ButtonGroup>
       <DescriptionGroup>
         <Title>용어 설명</Title>
