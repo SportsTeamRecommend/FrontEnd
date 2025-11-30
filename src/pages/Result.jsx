@@ -1,5 +1,4 @@
-import styled from 'styled-components';
-
+import { ResultContainer, LineContainer } from './Result.styles';
 import ResultCard from '../components/result/ResultCard';
 import Header from '../components/result/Header';
 import TeamInfoSection from '../components/result/TeamInfoSection';
@@ -9,19 +8,6 @@ import { useEffect, useState } from 'react';
 import api from '../utils/axios';
 
 import { toast } from 'react-toastify';
-
-const ResultContainer = styled.div`
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-const LineContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
 
 const Result = () => {
   // 검사 페이지에서 넘어온 파라미터 가져오기

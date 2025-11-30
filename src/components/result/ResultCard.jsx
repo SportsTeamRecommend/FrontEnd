@@ -10,7 +10,7 @@ import {
   nationalityToKorean,
 } from '../../utils/nationalityMap';
 import { f1LogoMap, kboLogoMap } from '../../utils/teamLogoMap';
-import { f1Team, kboTeam } from '../../utils/teamColor';
+import { f1Team, getTeamColor, kboTeam } from '../../utils/teamColor';
 
 const ResultCardWrapper = styled.div`
   display: flex;
@@ -105,7 +105,7 @@ const ResultCard = ({ teamName, type }) => {
 
   const logoMap = type === 'f1' ? f1LogoMap : kboLogoMap; // 결과 페이지 타입
   const logoSrc = logoMap[teamName] || ''; // 로컬 로고
-  const teamColor = type === 'f1' ? f1Team[teamName] : kboTeam[teamName]; // 팀 색상
+  const teamColor = getTeamColor(type, teamName); // 팀 색상
 
   const isF1 = type === 'f1';
 
