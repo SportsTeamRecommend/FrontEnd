@@ -17,10 +17,11 @@ const CardWrapper = styled.div`
 
   /* 화면이 768px 이하일 때 세로 정렬 */
   @media (max-width: 768px) {
-    flex-direction: column;
+    /* flex-direction: column; */
     align-items: center;
     text-align: center;
     padding: 14px;
+    gap: 50px;
   }
 `;
 
@@ -40,8 +41,8 @@ const DriverImage = styled.img`
   }
 
   @media (max-width: 480px) {
-    width: 90px;
-    height: 90px;
+    width: 120px;
+    height: 120px;
   }
 `;
 
@@ -108,6 +109,7 @@ const DetailIcon = styled.span`
 // 8. 상세 텍스트
 const DetailText = styled.span`
   font-size: 18px;
+  white-space: nowrap;
   color: #e8eaed;
 
   @media (max-width: 768px) {

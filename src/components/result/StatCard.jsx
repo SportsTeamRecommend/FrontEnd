@@ -56,6 +56,13 @@ const MiniStatCard = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 100px;
+
+  @media (max-width: 470px) {
+    padding: 10px;
+  }
+  @media (max-width: 390px) {
+    padding: 7px;
+  }
 `;
 
 const MiniLabel = styled.span`
