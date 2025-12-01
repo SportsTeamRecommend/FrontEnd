@@ -10,7 +10,7 @@ import {
   nationalityToKorean,
 } from '../../utils/nationalityMap';
 import { f1LogoMap, kboLogoMap } from '../../utils/teamLogoMap';
-import { f1Team, getTeamColor, kboTeam } from '../../utils/teamColor';
+import { getTeamColor } from '../../utils/teamColor';
 
 const ResultCardWrapper = styled.div`
   display: flex;
@@ -20,6 +20,10 @@ const ResultCardWrapper = styled.div`
 
   border-radius: 10px;
   background: rgba(55, 65, 81, 0.4);
+
+  @media (max-width: 768px) {
+    padding: 12px 25px;
+  }
 `;
 const Header = styled.div`
   display: flex;
