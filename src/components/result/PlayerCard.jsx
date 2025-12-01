@@ -13,6 +13,7 @@ const CardWrapper = styled.div`
   color: white;
   font-family:
     -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  box-sizing: border-box;
 
   /* 화면이 768px 이하일 때 세로 정렬 */
   @media (max-width: 768px) {
@@ -39,8 +40,8 @@ const DriverImage = styled.img`
   }
 
   @media (max-width: 480px) {
-    width: 120px;
-    height: 120px;
+    width: 90px;
+    height: 90px;
   }
 `;
 
@@ -49,7 +50,6 @@ const InfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  flex: 1; /* 남는 공간 자동 채우기 */
 
   @media (max-width: 768px) {
     align-items: center;

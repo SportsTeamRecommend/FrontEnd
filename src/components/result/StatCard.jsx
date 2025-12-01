@@ -40,6 +40,11 @@ const CardGrid = styled.div`
 
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
+
+  // 스탯카드 2x2로 변경
+  @media (max-width: 320px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 const MiniStatCard = styled.div`
@@ -51,10 +56,6 @@ const MiniStatCard = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 100px;
-
-  @media (max-width: 480px) {
-    width: 40px;
-  }
 `;
 
 const MiniLabel = styled.span`
