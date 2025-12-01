@@ -16,7 +16,7 @@ const SectionWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 12px 40px;
+  padding: 12px 20px;
   box-sizing: border-box;
   gap: 27px;
   width: 100%;
@@ -53,7 +53,7 @@ const MainDescription = styled.div`
 const SecondContent = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 21px;
+  gap: 10px;
   width: 100%;
   align-items: stretch;
 
@@ -156,7 +156,8 @@ const Button = styled.button`
 // YouTube 비디오 ID 추출 함수
 const getYouTubeVideoId = (url) => {
   if (!url) return null;
-  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|v=)([^#?]*).*/;
+  const regExp =
+    /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
   const match = url.match(regExp);
   return match && match[2].length === 11 ? match[2] : null;
 };
@@ -182,8 +183,6 @@ const TeamInfoSection = ({ teamName, type }) => {
     fetchData(); // 페이지 로드 시 팀 데이터 가져오기
   }, [teamName, type]);
 
-  console.log(teamData);
-
   const onClickSaveCalender = () => {
     toast.info('아직 지원하지 않는 기능입니다.');
   };
@@ -207,7 +206,8 @@ const TeamInfoSection = ({ teamName, type }) => {
                 videoId={videoId}
                 opts={{
                   width: '100%', // 부모 컨테이너에 맞게 너비 조절
-                  height: '100%', // 적절한 높이 설정
+
+                  height: '200', // 적절한 높이 설정
                   playerVars: {
                     autoplay: 0, // 자동 재생 비활성화
                     modestbranding: 1, // YouTube 로고 숨기기

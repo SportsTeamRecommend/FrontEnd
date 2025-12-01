@@ -138,7 +138,7 @@ const ResultActions = ({ onClickLike, type }) => {
         <LikeShareButton onClick={onClickShare}>🔗 공유하기</LikeShareButton>
       </ButtonGroup>
       <DescriptionGroup>
-        <Title>용어 설명</Title>
+        {/* <Title>용어 설명</Title>
         {type === 'f1' ? (
           <Description>
             WCC : 1년동안 가장 많은 포인트를 가져간 팀이 차지하는 팀 우승
@@ -149,7 +149,7 @@ const ResultActions = ({ onClickLike, type }) => {
             포디움 : 각 경기마다 3위 안에 든 횟수 <br />
             우승 : 각 경기마다 1위한 횟수 <br />
           </Description>
-        ) : null}
+        ) : null} */}
       </DescriptionGroup>
       <TryButtonGroup>
         <RetryButton onClick={handleRetry}>다시 테스트하기</RetryButton>
