@@ -15,6 +15,6 @@ export const LineContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  width: 90%;
   max-width: 1190px; // 데스크탑에서 최대 너비 제한
 `;
