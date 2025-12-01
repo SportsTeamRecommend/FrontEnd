@@ -51,6 +51,10 @@ const MiniStatCard = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 100px;
+
+  @media (max-width: 480px) {
+    width: 40px;
+  }
 `;
 
 const MiniLabel = styled.span`
@@ -58,7 +62,7 @@ const MiniLabel = styled.span`
   font-size: 14px;
   font-weight: 500;
   margin-bottom: 8px;
-  white-space: nowrap;
+  word-break: keep-all;
 `;
 
 const MiniDivider = styled.div`
@@ -72,6 +76,9 @@ const MiniValue = styled.span`
   color: #fdd835; /* 노란색 값 */
   font-size: 32px;
   font-weight: bold;
+  @media (max-width: 480px) {
+    font-size: 20px;
+  }
 `;
 
 // --- 메인 컴포넌트 ---
