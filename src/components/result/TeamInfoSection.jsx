@@ -76,10 +76,28 @@ const BoxTitle = styled.div`
   line-height: normal;
 `;
 const VideoContanier = styled.div`
-  flex: 1;
   border-radius: 10px;
   background: rgba(55, 65, 81, 0.5);
   padding: 20px 10px;
+  height: 550px;
+  position: relative;
+
+  @media (max-width: 1024px) {
+    height: 400px;
+  }
+
+  @media (max-width: 768px) {
+    height: 200px;
+  }
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+  }
 `;
 
 const ThirdContent = styled.div`
@@ -93,7 +111,7 @@ const ThirdContent = styled.div`
     gap: 28px;
   }
 `;
-const BottunGroup = styled.div`
+const ButtonGroup = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -138,9 +156,9 @@ const Button = styled.button`
 // YouTube 비디오 ID 추출 함수
 const getYouTubeVideoId = (url) => {
   if (!url) return null;
-  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|v=)([^#?]*).*/;
   const match = url.match(regExp);
-  return (match && match[2].length === 11) ? match[2] : null;
+  return match && match[2].length === 11 ? match[2] : null;
 };
 
 const TeamInfoSection = ({ teamName, type }) => {
@@ -185,14 +203,17 @@ const TeamInfoSection = ({ teamName, type }) => {
           <BoxTitle>하이라이트</BoxTitle>
           <VideoContanier>
             {videoId ? (
-              <YouTube videoId={videoId} opts={{
-                width: '100%', // 부모 컨테이너에 맞게 너비 조절
-                height: '200', // 적절한 높이 설정
-                playerVars: {
-                  autoplay: 0, // 자동 재생 비활성화
-                  modestbranding: 1, // YouTube 로고 숨기기
-                },
-              }} />
+              <YouTube
+                videoId={videoId}
+                opts={{
+                  width: '100%', // 부모 컨테이너에 맞게 너비 조절
+                  height: '100%', // 적절한 높이 설정
+                  playerVars: {
+                    autoplay: 0, // 자동 재생 비활성화
+                    modestbranding: 1, // YouTube 로고 숨기기
+                  },
+                }}
+              />
             ) : (
               <div>영상을 불러올 수 없습니다.</div>
             )}
@@ -200,9 +221,12 @@ const TeamInfoSection = ({ teamName, type }) => {
         </Box>
       </SecondContent>
       <ThirdContent>
-        <BottunGroup>
+        <ButtonGroup>
           <ImageBox>
-            <img src={type === 'f1' ? copang : tving} alt="" />
+            <img
+              src={type === 'f1' ? copang : tving}
+              alt="중계 플랫폼 이미지"
+            />
           </ImageBox>
           <Button
             onClick={() =>
@@ -215,13 +239,13 @@ const TeamInfoSection = ({ teamName, type }) => {
           >
             {text} 경기보러가기
           </Button>
-        </BottunGroup>
-        <BottunGroup>
+        </ButtonGroup>
+        <ButtonGroup>
           <ImageBox>
-            <img src={dal} alt="" />
+            <img src={dal} alt="달력이미지" />
           </ImageBox>
           <Button onClick={onClickSaveCalender}>달력에 경기 일정 저장</Button>
-        </BottunGroup>
+        </ButtonGroup>
       </ThirdContent>
     </SectionWrapper>
   );

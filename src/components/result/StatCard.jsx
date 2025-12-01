@@ -1,5 +1,4 @@
 // components/StatCard.jsx
-import React from 'react';
 import styled from 'styled-components';
 
 // --- Styled Components ---
@@ -10,6 +9,14 @@ const GroupWrapper = styled.div`
   background-color: #2d323e; /* 배경색 (페이지 배경과 동일하게) */
   padding: 24px;
   border-radius: 12px;
+
+  /* 화면이 768px 이하일 때 세로 정렬 */
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 14px;
+  }
 `;
 
 // "역대 성적"과 같은 그룹 제목
