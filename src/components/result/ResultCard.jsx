@@ -22,7 +22,7 @@ const ResultCardWrapper = styled.div`
   background: rgba(55, 65, 81, 0.4);
 
   @media (max-width: 768px) {
-    padding: 12px 25px;
+    padding: 12px 20px;
   }
 `;
 const Header = styled.div`
@@ -209,11 +209,11 @@ const ResultCard = ({ teamName, type }) => {
     : [
         { label: '평균순위', value: teamData.avgRank },
         {
-          label: '한국시리즈우승',
+          label: '한국시리즈 우승',
           value: teamData.koreaSeasonWins,
         },
-        { label: '정규시즌우승', value: teamData.leagueWins },
-        { label: '포스트시즌진출', value: teamData.postSeason },
+        { label: '정규시즌 우승', value: teamData.leagueWins },
+        { label: '포스트시즌 진출', value: teamData.postSeason },
       ];
 
   const seasonStats = isF1
