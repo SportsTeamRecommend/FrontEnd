@@ -23,12 +23,12 @@ const PriceCard = styled.div`
 const ItemInfo = styled.div`
   display: flex;
   align-items: center;
-  gap: 16px;
+
   margin-right: 20px;
 
   @media (max-width: ${breakpoints.mobile}) {
     margin-right: 0;
-    width: 200px;
+    flex-grow: 1;
     justify-content: flex-start;
   }
 `;
@@ -70,10 +70,12 @@ const IconBox = styled.div`
 
 const TeamImage = styled.img`
   width: 60px;
+  height: 60px;
   border-radius: 6px;
 
   @media (max-width: ${breakpoints.mobile}) {
     width: 50px;
+    height: 50px;
   }
 `;
 
@@ -82,11 +84,14 @@ const TeamName = styled.div`
   font-size: 20px;
   font-weight: 700;
   white-space: nowrap;
+  margin-left: 30px;
 
   @media (max-width: ${breakpoints.mobile}) {
     font-size: 14px;
     word-break: keep-all;
     white-space: normal;
+    max-width: 100px;
+    margin-left: 10px;
   }
 `;
 
@@ -97,7 +102,8 @@ const ItemStats = styled.div`
 
   @media (max-width: ${breakpoints.mobile}) {
     align-items: flex-start;
-    width: 90%;
+    flex-direction: column;
+    width: 30%;
     gap: 10px;
   }
 `;
