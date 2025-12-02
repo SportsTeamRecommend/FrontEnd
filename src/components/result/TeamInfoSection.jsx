@@ -133,6 +133,10 @@ const ImageBox = styled.button`
     object-fit: cover;
     border-radius: 10px;
   }
+  @media (max-width: 768px) {
+    width: 50px;
+    height: 50px;
+  }
 `;
 const Button = styled.button`
   width: 213px;
@@ -151,6 +155,12 @@ const Button = styled.button`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+
+  @media (max-width: 768px) {
+    width: 160px;
+    height: 30px;
+    font-size: 14px;
+  }
 `;
 
 // YouTube 비디오 ID 추출 함수
